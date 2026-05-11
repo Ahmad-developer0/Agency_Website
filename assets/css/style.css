@@ -856,6 +856,88 @@ body.menu-open {
     }
 }
 
+/* WhatsApp Float Button */
+
+.whatsapp-float {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 30px;
+    right: 26px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float img {
+    width: 45px;
+    height: 45px;
+    transform: translate(0px, 0px);
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+
+/* Tablet styles (Devices under 1368px) */
+@media screen and (max-width: 1400px) {
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+/* Mobile styles (Devices under 768px) */
+@media screen and (max-width: 768px) {
+    .whatsapp-float {
+        width: 40px;
+        height: 40px;
+        bottom: 20px; /* Move closer to corner to save space */
+        right: 20px;
+    }
+    
+    .whatsapp-float img {
+        width: 30px; /* Slightly smaller icon for mobile */
+        height: 30px;
+    }
+
+    .whatsapp-float::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #25d366;
+        border-radius: 50%;
+        z-index: -1;
+        animation: fill-expand 2s infinite ease-out;
+        border: none !important;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fill-expand {
+        0% { 
+            transform: scale(1); 
+            opacity: 0.2; 
+        }
+        100% { 
+        transform: scale(1.5); /* Decreased from 1.8 */
+        opacity: 0; 
+        } 
+    }
+}
+
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 640px) {
     .hero-visual {
