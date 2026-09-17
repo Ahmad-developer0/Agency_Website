@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     waLink.rel = "noopener noreferrer";
 
     // Add an icon or image inside the link
-    waLink.innerHTML = '<img src="./public/images/WhatsAppIcon.png" alt="WhatsApp" />';
+    waLink.innerHTML = '<img src="./public/images/whatsapp.avif" alt="WhatsApp" />';
 
     // Attach to the container in the HTML
     document.getElementById('whatsapp-button-container').appendChild(waLink);

@@ -55,8 +55,8 @@ const servicesData = [
       "We craft comprehensive visual identities that communicate your brand's essence, values, and personality across every touchpoint.",
     keypoints: [
       "Logo & visual identity system",
-      "Brand guidelines & style guide",
-      "Typography & color system",
+      "Branding Video Ads",
+      "Frontend Development",
       "Brand voice & messaging framework",
       "Stationery & collateral design",
       "Brand audit & refresh consulting",
@@ -91,17 +91,17 @@ const servicesData = [
     ],
   },
   {
-    icon: "💰",
-    title: "Paid Advertising (PPC)",
+    icon: "🛍️",
+    title: "Shopify Store Development",
     description:
-      "Performance-driven paid campaigns across Google, Meta, and programmatic channels that maximize ROI and minimize wasted spend.",
+      "Conversion-focused Shopify stores built to sell — custom themes, seamless checkout, and the integrations your business runs on.",
     keypoints: [
-      "Google Ads search & display campaigns",
-      "Meta & Instagram advertising",
-      "YouTube & video advertising",
-      "Retargeting & remarketing strategies",
-      "Landing page optimization (CRO)",
-      "Budget management & bid optimization",
+      "Custom Shopify theme design & development",
+      "Store setup, migration & product catalog",
+      "Payment gateway & shipping configuration",
+      "Shopify app integration & customization",
+      "Speed optimization & mobile experience",
+      "Conversion rate optimization (CRO)",
     ],
   },
   {
@@ -120,16 +120,16 @@ const servicesData = [
   },
   {
     icon: "📧",
-    title: "Email Marketing & CRM",
+    title: "App Development",
     description:
-      "Automated email journeys and CRM strategies that nurture leads, retain customers, and drive repeat revenue on autopilot.",
+      "High-performance Android applications designed to deliver exceptional user experiences and scalable business solutions.",
     keypoints: [
-      "Email strategy & sequence architecture",
-      "Template design & copywriting",
-      "Marketing automation (Klaviyo, HubSpot)",
-      "List segmentation & personalization",
-      "A/B testing & deliverability optimization",
-      "CRM integration & workflow setup",
+      "Requirement analysis & project planning",
+      "UI/UX design & prototyping",
+      "Kotlin & Java development",
+      "API integration & backend setup",
+      "Testing & performance optimization",
+      "Bug fixing & app optimization",
     ],
   },
 ];
@@ -233,67 +233,50 @@ const testimonialsData = [
   },
 ];
 
-const portfolioData = [
+/* ===================================================
+   PORTFOLIO
+   Loaded from the database (/api/projects). The array
+   below is only what shows if that request fails.
+=================================================== */
+
+let portfolioData = [];
+
+const PORTFOLIO_FALLBACK = [
   {
-    emoji: "🛍️",
-    title: "Glow Skincare Rebrand",
-    category: "Branding",
-    tags: ["Brand Identity", "Logo Design", "Packaging", "Social Media"],
-    description:
-      "A comprehensive rebrand for Glow Skincare Co., transforming their visual identity from an outdated look to a modern, premium aesthetic. We developed a complete brand system including logo, typography, color palette, packaging design, and social media templates. The rebrand resulted in a 156% increase in brand recognition surveys and opened doors to major retail partnerships.",
-    link: "#",
-  },
-  {
-    emoji: "📊",
-    title: "NovaTech SEO Campaign",
-    category: "SEO",
-    tags: ["Technical SEO", "Content Strategy", "Link Building", "Analytics"],
-    description:
-      "A 12-month SEO overhaul for NovaTech Indonesia — a B2B SaaS company. We conducted a full technical audit, rebuilt their content architecture, and launched an aggressive link-building campaign. Results: Page 1 rankings for 47 target keywords, 280% increase in organic traffic, and a 340% growth in inbound demo requests.",
-    link: "#",
-  },
-  {
-    emoji: "📱",
-    title: "Kopi Rimba Social Launch",
-    category: "Social Media",
-    tags: [
-      "Social Strategy",
-      "Content Creation",
-      "Influencer Marketing",
-      "Meta Ads",
-    ],
-    description:
-      "Zero-to-hero social media launch for Kopi Rimba, an artisan coffee brand. We built their entire content strategy, managed influencer partnerships with 15 micro-influencers, and ran targeted Meta campaigns. Within 90 days: 45K Instagram followers, 1M+ content impressions, and sold-out launch inventory.",
-    link: "#",
-  },
-  {
-    emoji: "🌐",
-    title: "Archipelago Retail E-com",
+    emoji: "\ud83c\udf10",
+    title: "Archipelago Retail E-commerce",
     category: "Web Dev",
     tags: ["Shopify", "UI/UX Design", "CRO", "Performance"],
+    summary: "Shopify rebuild focused on speed and conversions.",
     description:
-      "Complete e-commerce redesign and rebuild for Archipelago Retail on Shopify. Focused on conversion rate optimization, mobile-first design, and lightning-fast performance. Achieved 99/100 PageSpeed score, reduced cart abandonment by 34%, and increased average order value by 28%.",
-    link: "#",
-  },
-  {
-    emoji: "💰",
-    title: "Logistik Nusantara PPC",
-    category: "Paid Ads",
-    tags: ["Google Ads", "LinkedIn Ads", "Remarketing", "B2B"],
-    description:
-      "A comprehensive paid advertising strategy for Logistik Nusantara targeting enterprise B2B clients. We built layered Google Search and LinkedIn campaigns with precision audience targeting. Achieved 3.8x ROAS in month 1, reducing cost-per-qualified-lead by 62% vs. their previous campaigns.",
-    link: "#",
-  },
-  {
-    emoji: "📧",
-    title: "Garuda Finance Email System",
-    category: "Email",
-    tags: ["HubSpot", "Email Automation", "CRM", "Lead Nurture"],
-    description:
-      "End-to-end email marketing automation for Garuda Finance using HubSpot. We architected a 14-touch nurture sequence, built behavioral segmentation, and created dynamic templates. The system now generates 30% of monthly revenue, with a 42% average open rate — 3x the industry average.",
-    link: "#",
+      "Complete e-commerce redesign and rebuild for Archipelago Retail on Shopify. Focused on conversion rate optimization, mobile-first design, and lightning-fast performance.",
+    cover: "",
+    gallery: [],
+    client: "",
+    date: "",
+    results: [],
+    liveUrl: "",
+    featured: false,
   },
 ];
+
+async function loadPortfolio() {
+  try {
+    const resp = await fetch("/api/projects");
+    const json = await resp.json();
+    if (json && json.success && Array.isArray(json.projects) && json.projects.length) {
+      portfolioData = json.projects;
+    } else {
+      portfolioData = PORTFOLIO_FALLBACK;
+    }
+  } catch (err) {
+    console.warn("Could not load projects, showing fallback:", err);
+    portfolioData = PORTFOLIO_FALLBACK;
+  }
+
+  renderPortfolioFilters();
+  renderPortfolio();
+}
 
 /* =================== RENDER FUNCTIONS =================== */
 
@@ -379,30 +362,70 @@ function renderTestimonials() {
 
 function renderPortfolio(filter = "all") {
   const grid = document.getElementById("portfolio-grid");
+
+  if (!portfolioData.length) {
+    grid.innerHTML = `
+      <div class="col-span-full text-center py-16">
+        <p class="body-muted">No projects to show yet.</p>
+      </div>`;
+    return;
+  }
+
   grid.innerHTML = portfolioData
-    .map(
-      (item, i) => `
-    <div class="portfolio-card reveal-up ${filter !== "all" && item.category !== filter ? "hidden" : ""}" 
-         data-category="${item.category}" 
+    .map((item, i) => {
+      const hidden = filter !== "all" && item.category !== filter ? "hidden" : "";
+      const emoji = item.emoji || "\ud83d\uddbc\ufe0f";
+
+      const media = item.cover
+        ? `<img src="${esc(item.cover)}" alt="${esc(item.title)}" class="portfolio-img"
+                loading="lazy" data-emoji="${esc(emoji)}" onerror="portfolioImgFallback(this)">`
+        : `<div class="portfolio-img-placeholder overflow-hidden"><span>${esc(emoji)}</span></div>`;
+
+      const tagList = item.tags || [];
+      const tags = tagList.slice(0, 3).map((t) => `<span class="chip">${esc(t)}</span>`).join("");
+      const more = tagList.length > 3 ? `<span class="chip">+${tagList.length - 3}</span>` : "";
+
+      return `
+    <div class="portfolio-card reveal-up ${hidden}"
+         data-category="${esc(item.category)}"
          style="transition-delay: ${i * 0.08}s"
          onclick="openPortfolioModal(${i})">
-      <div class="portfolio-img-placeholder overflow-hidden">
-        <span>${item.emoji}</span>
+      <div class="portfolio-media">
+        ${media}
+        ${item.featured ? '<span class="featured-badge">Featured</span>' : ""}
       </div>
       <div class="p-5">
         <div class="flex items-center justify-between mb-2">
-          <span class="chip">${item.category}</span>
+          <span class="chip">${esc(item.category)}</span>
         </div>
-        <h3 class="font-display font-bold text-lg mb-3">${item.title}</h3>
-        <div class="flex flex-wrap gap-1.5">
-          ${item.tags.map((t) => `<span class="chip">${t}</span>`).join("")}
-        </div>
+        <h3 class="font-display font-bold text-lg mb-2">${esc(item.title)}</h3>
+        ${item.summary ? `<p class="body-muted text-sm leading-relaxed mb-3 clamp-2">${esc(item.summary)}</p>` : ""}
+        <div class="flex flex-wrap gap-1.5">${tags}${more}</div>
       </div>
-    </div>
-  `,
-    )
+    </div>`;
+    })
     .join("");
   observeReveal();
+}
+
+/* A cover image that fails to load falls back to the emoji tile */
+function portfolioImgFallback(img) {
+  const box = document.createElement("div");
+  box.className = "portfolio-img-placeholder overflow-hidden";
+  const span = document.createElement("span");
+  span.textContent = img.dataset.emoji || "\ud83d\uddbc\ufe0f";
+  box.appendChild(span);
+  img.replaceWith(box);
+}
+
+/* Escape anything coming from the database before it reaches innerHTML */
+function esc(v) {
+  return String(v == null ? "" : v)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function renderPortfolioFilters() {
@@ -458,24 +481,192 @@ function openServiceModal(index) {
 
 function openPortfolioModal(index) {
   const item = portfolioData[index];
+  if (!item) return;
+
+  const emoji = item.emoji || "\ud83d\uddbc\ufe0f";
+
+  // ── Hero ──
+  const hero = item.cover
+    ? `<img src="${esc(item.cover)}" alt="${esc(item.title)}" class="case-hero-img"
+            data-emoji="${esc(emoji)}" onerror="caseHeroFallback(this)">`
+    : `<div class="case-hero-placeholder"><span>${esc(emoji)}</span></div>`;
+
+  // ── Meta strip: client and date ──
+  const metaBits = [];
+  if (item.client) {
+    metaBits.push(`<div class="case-meta-item">
+      <span class="case-meta-label">Client</span>
+      <span class="case-meta-value">${esc(item.client)}</span>
+    </div>`);
+  }
+  if (item.date) {
+    metaBits.push(`<div class="case-meta-item">
+      <span class="case-meta-label">Delivered</span>
+      <span class="case-meta-value">${esc(formatProjectDate(item.date))}</span>
+    </div>`);
+  }
+  const meta = metaBits.length ? `<div class="case-meta">${metaBits.join("")}</div>` : "";
+
+  // ── Results ──
+  const results = (item.results || []).filter((r) => r && (r.label || r.value));
+  const resultsBlock = results.length
+    ? `<div class="case-block">
+         <h4 class="case-heading">Results</h4>
+         <div class="case-results">
+           ${results.map((r) => `
+             <div class="case-result">
+               <div class="case-result-value">${esc(r.value)}</div>
+               <div class="case-result-label">${esc(r.label)}</div>
+             </div>`).join("")}
+         </div>
+       </div>`
+    : "";
+
+  // ── Gallery ──
+  const gallery = (item.gallery || []).filter(Boolean);
+  const galleryBlock = gallery.length
+    ? `<div class="case-block">
+         <h4 class="case-heading">Gallery</h4>
+         <div class="case-gallery">
+           ${gallery.map((g, gi) => `
+             <img src="${esc(g)}" alt="${esc(item.title)} image ${gi + 1}" loading="lazy"
+                  class="case-gallery-img" data-full="${esc(g)}">`).join("")}
+         </div>
+       </div>`
+    : "";
+
+  // ── Tags ──
+  const tags = (item.tags || []).length
+    ? `<div class="case-block">
+         <h4 class="case-heading">What we did</h4>
+         <div class="flex flex-wrap gap-2">
+           ${item.tags.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}
+         </div>
+       </div>`
+    : "";
+
+  // ── Actions: live link (if any) + book a meeting ──
+  const liveBtn = item.liveUrl
+    ? `<a href="${esc(item.liveUrl)}" target="_blank" rel="noopener noreferrer"
+          class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm inline-flex items-center gap-2 transition-all duration-300 hover:scale-105">
+         View Live Project <span aria-hidden="true">&#8599;</span>
+       </a>`
+    : "";
+
+  const bookBtn = `
+    <button type="button" id="case-book-btn"
+            class="btn-outline px-6 py-3 rounded-xl font-semibold text-sm inline-flex items-center gap-2 transition-all duration-300 hover:scale-105">
+      Book a Meeting <span aria-hidden="true">&#8594;</span>
+    </button>`;
+
   document.getElementById("portfolio-modal-content").innerHTML = `
-    <div class="portfolio-img-placeholder rounded-2xl mb-6" style="height:180px; border-radius: 1rem;">
-      <span style="font-size:4rem">${item.emoji}</span>
+    <div class="case-hero">${hero}</div>
+
+    <div class="flex flex-wrap items-center gap-2 mb-3">
+      <span class="chip">${esc(item.category)}</span>
+      ${item.featured ? '<span class="chip chip-featured">Featured</span>' : ""}
     </div>
-    <div class="flex flex-wrap gap-2 mb-3">
-      <span class="chip">${item.category}</span>
-    </div>
-    <h2 class="font-display font-extrabold text-2xl mb-4">${item.title}</h2>
-    <p class="body-muted leading-relaxed mb-6">${item.description}</p>
-    <div>
-      <h4 class="font-semibold text-sm mb-3" style="color:var(--accent)">TAGS</h4>
-      <div class="flex flex-wrap gap-2 mb-6">
-        ${item.tags.map((t) => `<span class="chip">${t}</span>`).join("")}
-      </div>
-    </div>
-    <a href="${item.link}" class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm inline-block transition-all duration-300 hover:scale-105">View Live Project →</a>
+
+    <h2 class="font-display font-extrabold text-2xl mb-3">${esc(item.title)}</h2>
+    ${item.summary ? `<p class="case-summary">${esc(item.summary)}</p>` : ""}
+
+    ${meta}
+
+    ${item.description ? `
+      <div class="case-block">
+        <h4 class="case-heading">About this project</h4>
+        <p class="body-muted leading-relaxed whitespace-pre-line">${esc(item.description)}</p>
+      </div>` : ""}
+
+    ${resultsBlock}
+    ${galleryBlock}
+    ${tags}
+
+    <div class="case-actions">${liveBtn}${bookBtn}</div>
   `;
+
+  // Wire the buttons here rather than with inline handlers, so titles
+  // containing quotes or backslashes cannot break out of an attribute.
+  const bookEl = document.getElementById("case-book-btn");
+  if (bookEl) {
+    bookEl.addEventListener("click", () => bookFromProject(item.title, item.category));
+  }
+  document.querySelectorAll("#portfolio-modal-content .case-gallery-img").forEach((img) => {
+    img.addEventListener("click", () => openLightbox(img.dataset.full));
+  });
+
   openModal("portfolio-modal");
+}
+
+function caseHeroFallback(img) {
+  const box = document.createElement("div");
+  box.className = "case-hero-placeholder";
+  const span = document.createElement("span");
+  span.textContent = img.dataset.emoji || "\ud83d\uddbc\ufe0f";
+  box.appendChild(span);
+  img.replaceWith(box);
+}
+
+function formatProjectDate(v) {
+  const d = new Date(v);
+  if (isNaN(d.getTime())) return v;
+  return d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+}
+
+/* Close the project, then jump to the booking form with the
+   service prefilled so the enquiry arrives with context. */
+function bookFromProject(title, category) {
+  closeModal("portfolio-modal");
+
+  // Prefill the message so the enquiry arrives with context
+  const note = document.getElementById("book-message");
+  if (note && !note.value.trim()) {
+    note.value = `I'd like to discuss a project similar to "${title}".`;
+  }
+
+  // Match the project's category to a service in the dropdown, when one fits
+  const select = document.getElementById("book-service");
+  if (select && !select.value && category) {
+    const wanted = String(category).toLowerCase();
+    const option = [...select.options].find(
+      (o) => o.value && o.value.toLowerCase().includes(wanted)
+    );
+    if (option) select.value = option.value;
+  }
+
+  setTimeout(() => {
+    const section = document.getElementById("book-meeting");
+    if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 260);
+}
+
+/* Full-size view of a gallery image */
+function openLightbox(src) {
+  const existing = document.getElementById("case-lightbox");
+  if (existing) existing.remove();
+
+  const box = document.createElement("div");
+  box.id = "case-lightbox";
+  box.className = "case-lightbox";
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "case-lightbox-close";
+  closeBtn.setAttribute("aria-label", "Close image");
+  closeBtn.innerHTML = "&#10005;";
+
+  const full = document.createElement("img");
+  full.src = src;
+  full.alt = "";
+
+  box.append(closeBtn, full);
+
+  const close = () => box.remove();
+  box.addEventListener("click", (e) => { if (e.target !== full) close(); });
+  document.addEventListener("keydown", function onEsc(e) {
+    if (e.key === "Escape") { close(); document.removeEventListener("keydown", onEsc); }
+  });
+
+  document.body.appendChild(box);
+  requestAnimationFrame(() => box.classList.add("open"));
 }
 
 function openModal(id) {
@@ -828,8 +1019,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderBenefits();
   renderServices();
   renderTestimonials();
-  renderPortfolioFilters();
-  renderPortfolio();
+  loadPortfolio();   // fetches projects, then renders filters + grid
   initNavbar();
   initBookingDate();
   observeReveal();

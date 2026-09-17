@@ -1,0 +1,59 @@
+# ============================================
+#  Nexyra Studio — Netlify configuration
+# ============================================
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ── API routes ──
+# The pages call /api/<name>; Netlify serves functions from
+# /.netlify/functions/<name>, so map one onto the other.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+
+# ── Clean URLs ──
+[[redirects]]
+  from = "/verify"
+  to = "/verify.html"
+  status = 200
+
+# Admin panel lives at an unguessable path.
+# /admin.html itself is blocked below so only this path works.
+[[redirects]]
+  from = "/staff-portal"
+  to = "/admin.html"
+  status = 200
+
+# Hide the real filename — anyone typing /admin.html is sent home.
+[[redirects]]
+  from = "/admin.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin"
+  to = "/"
+  status = 301
+  force = true
+
+# ── Headers ──
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Keep the admin panel out of search engines
+[[headers]]
+  for = "/staff-portal"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

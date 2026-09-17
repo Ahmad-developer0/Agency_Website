@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Intern Records | Nexyra Studio Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link href="public/images/favicon.png" rel="icon">
+
+  <style>
+    .admin-wrap {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-main { flex: 1 0 auto; }
+    .admin-foot { flex-shrink: 0; margin-top: auto; }
+
+    .admin-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
+    }
+    .dark-mode .admin-card { box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45); }
+
+    .adm-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 7px;
+    }
+    .adm-input {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-family: 'Lato', sans-serif;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .adm-input::placeholder { color: var(--text-muted); }
+    .adm-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-bg);
+    }
+    .adm-input option { background: var(--surface); color: var(--text); }
+
+    /* Password field with a show/hide toggle */
+    .pw-wrap { position: relative; }
+    .pw-wrap .adm-input { padding-right: 46px; }
+    .pw-toggle {
+      position: absolute;
+      top: 50%;
+      right: 6px;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 16px;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease;
+    }
+    .pw-toggle:hover { color: var(--accent); background: var(--accent-bg); }
+    .pw-toggle:focus-visible {
+      outline: none;
+      color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .btn-ghost {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: all .2s ease;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .btn-danger {
+      background: rgba(239,68,68,.1);
+      border: 1px solid rgba(239,68,68,.3);
+      color: #dc2626;
+      transition: all .2s ease;
+    }
+    .btn-danger:hover { background: rgba(239,68,68,.18); }
+    .dark-mode .btn-danger { color: #f87171; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--surface-2); }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .pill-ok      { background: rgba(34,197,94,.12);  color: #16a34a; }
+    .pill-ongoing { background: rgba(234,179,8,.12);  color: #ca8a04; }
+    .pill-revoked { background: rgba(239,68,68,.12);  color: #dc2626; }
+    .dark-mode .pill-ok      { color: #4ade80; }
+    .dark-mode .pill-ongoing { color: #facc15; }
+    .dark-mode .pill-revoked { color: #f87171; }
+
+    .cert-mono {
+      font-family: 'Orbitron', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 90px);
+      z-index: 200;
+      padding: 13px 22px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      box-shadow: 0 12px 34px rgba(0,0,0,.28);
+      transition: transform .35s cubic-bezier(.2,.9,.3,1.3), opacity .35s ease;
+      opacity: 0;
+      max-width: calc(100vw - 32px);
+    }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    .toast-ok    { background: #16a34a; }
+    .toast-error { background: #dc2626; }
+
+    .spinner-sm {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: adm-spin .7s linear infinite;
+      display: inline-block;
+    }
+    @keyframes adm-spin { to { transform: rotate(360deg); } }
+
+    .table-scroll { overflow-x: auto; }
+
+    /* ===== Tabs ===== */
+    .tabs {
+      display: flex;
+      gap: 6px;
+      padding: 5px;
+      border-radius: 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      width: fit-content;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      border: 0;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 9px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .2s ease;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      background: var(--surface);
+      color: var(--accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    }
+
+    /* ===== Form sections ===== */
+    .form-section {
+      padding-bottom: 26px;
+      margin-bottom: 26px;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section:last-of-type { border-bottom: 0; margin-bottom: 18px; }
+    .section-head {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .hint { font-size: 11.5px; color: var(--text-muted); margin-top: 6px; }
+    .lc { text-transform: none; letter-spacing: 0; font-weight: 400; }
+    textarea.adm-input { resize: vertical; min-height: 92px; line-height: 1.6; }
+
+    /* ===== Dropzone ===== */
+    .dropzone {
+      position: relative;
+      border: 2px dashed var(--border);
+      border-radius: 16px;
+      background: var(--surface-2);
+      padding: 26px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .dropzone:hover, .dropzone.drag {
+      border-color: var(--accent);
+      background: var(--accent-bg);
+    }
+    .dz-empty i { font-size: 26px; color: var(--accent); display: block; margin-bottom: 8px; }
+    .dz-empty p { font-size: 13.5px; color: var(--text); margin-bottom: 4px; }
+    .dz-link { color: var(--accent); font-weight: 700; text-decoration: underline; }
+    .dz-hint { font-size: 11.5px; color: var(--text-muted); }
+
+    .dz-preview { position: relative; display: inline-block; }
+    .dz-preview img {
+      max-height: 170px;
+      border-radius: 12px;
+      display: block;
+      border: 1px solid var(--border);
+    }
+    .dz-remove {
+      position: absolute;
+      top: -9px;
+      right: -9px;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      border: 2px solid var(--surface);
+      background: #dc2626;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .dz-busy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+    .dz-busy .spinner-sm { border-color: var(--border); border-top-color: var(--accent); }
+
+    /* ===== Gallery thumbnails ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+      gap: 11px;
+    }
+    .gallery-item { position: relative; }
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 11px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+    .gallery-item button {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--surface);
+      background: #dc2626;
+      color: #fff;
+      font-size: 11px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ===== Result rows ===== */
+    .result-row { display: flex; gap: 10px; align-items: center; }
+    .result-row .adm-input { flex: 1; }
+    .result-row button {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: rgba(239,68,68,.1);
+      border: 1px solid rgba(239,68,68,.3);
+      color: #dc2626;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .dark-mode .result-row button { color: #f87171; }
+
+    /* ===== Toggle switch ===== */
+    .switch { display: flex; align-items: center; gap: 11px; cursor: pointer; user-select: none; }
+    .switch input { display: none; }
+    .switch-track {
+      width: 42px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--border);
+      position: relative;
+      flex-shrink: 0;
+      transition: background .2s ease;
+    }
+    .switch-dot {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,.3);
+      transition: transform .2s ease;
+    }
+    .switch input:checked + .switch-track { background: var(--accent); }
+    .switch input:checked + .switch-track .switch-dot { transform: translateX(18px); }
+    .switch-label { font-size: 13.5px; font-weight: 600; color: var(--text); }
+
+    /* ===== Admin project cards ===== */
+    .project-admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 18px;
+    }
+    .p-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .p-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .p-thumb {
+      height: 152px;
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      overflow: hidden;
+      position: relative;
+    }
+    .p-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .p-flags {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .flag {
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+    }
+    .flag-featured { background: rgba(79,70,229,.9);  color: #fff; }
+    .flag-draft    { background: rgba(234,179,8,.92); color: #422006; }
+    .p-body { padding: 16px 17px 17px; flex: 1; display: flex; flex-direction: column; }
+    .p-cat {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .p-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 7px;
+      color: var(--text);
+    }
+    .p-sum {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 13px;
+      flex: 1;
+    }
+    .p-meta {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 13px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .p-actions { display: flex; gap: 8px; }
+    .p-actions button { flex: 1; padding: 9px; border-radius: 10px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+  </style>
+</head>
+<body class="light-mode">
+
+  <div class="admin-wrap">
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav class="sticky top-0 z-[70]" style="background:var(--navbar-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <span class="font-display font-extrabold text-lg tracking-tight accent-text">Nexyra<span class="logo-text">Studio</span></span>
+          <span class="badge-pill px-3 py-1 rounded-full text-[11px] font-bold">ADMIN</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="/verify" class="nav-link text-sm hidden sm:inline-block">Verify page</a>
+          <button id="theme-toggle" class="theme-btn w-9 h-9 rounded-xl flex items-center justify-center" aria-label="Toggle theme">
+            <svg id="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg id="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+          <button id="logout-btn" class="btn-ghost px-4 py-2 rounded-xl text-sm font-semibold hidden">Log out</button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="admin-main px-4 sm:px-6 py-10">
+      <div class="max-w-6xl mx-auto">
+
+        <!-- ═══════════ LOGIN ═══════════ -->
+        <section id="login-view" class="max-w-md mx-auto mt-10">
+          <div class="admin-card rounded-3xl p-8">
+            <div class="text-center mb-7">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4"
+                   style="background:var(--accent-bg);color:var(--accent)">
+                <i class="bi bi-shield-lock-fill"></i>
+              </div>
+              <h1 class="font-display text-xl font-extrabold tracking-tight mb-2">Admin Login</h1>
+              <p class="body-muted text-sm">Enter the admin password to manage intern records.</p>
+            </div>
+            <form id="login-form">
+              <label class="adm-label" for="password">Password</label>
+              <div class="pw-wrap mb-4">
+                <input id="password" type="password" class="adm-input" placeholder="••••••••" required autocomplete="current-password"/>
+                <button type="button" id="pw-toggle" class="pw-toggle" aria-label="Show password" aria-pressed="false">
+                  <i class="bi bi-eye" id="pw-icon"></i>
+                </button>
+              </div>
+              <button type="submit" id="login-btn" class="btn-primary w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2.5">
+                <span id="login-label">Log in</span>
+                <span id="login-spinner" class="spinner-sm hidden"></span>
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ═══════════ DASHBOARD ═══════════ -->
+        <section id="dash-view" class="hidden">
+
+          <!-- ── Tabs ── -->
+          <div class="tabs mb-8">
+            <button class="tab-btn active" data-tab="interns">
+              <i class="bi bi-patch-check mr-1.5"></i>Interns
+            </button>
+            <button class="tab-btn" data-tab="projects">
+              <i class="bi bi-collection mr-1.5"></i>Projects
+            </button>
+          </div>
+
+        <!-- ═══════════ INTERNS TAB ═══════════ -->
+        <div id="tab-interns">
+
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-7">
+            <div>
+              <h1 class="font-display text-2xl font-extrabold tracking-tight mb-1.5">Intern Records</h1>
+              <p class="body-muted text-sm">Add, edit and remove the certificates people can verify.</p>
+            </div>
+            <button id="add-btn" class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap">
+              <i class="bi bi-plus-lg mr-1.5"></i>Add Intern
+            </button>
+          </div>
+
+          <!-- Form (hidden until Add/Edit) -->
+          <div id="form-card" class="admin-card rounded-3xl p-6 md:p-7 mb-7 hidden">
+            <div class="flex items-center justify-between mb-6">
+              <h2 id="form-title" class="font-display text-lg font-extrabold tracking-tight">Add Intern</h2>
+              <button id="form-close" class="btn-ghost w-9 h-9 rounded-full text-sm" aria-label="Close">&#10005;</button>
+            </div>
+
+            <form id="intern-form">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="adm-label" for="f-cert">Certificate Number *</label>
+                  <input id="f-cert" class="adm-input" placeholder="NXS-2025-014" required maxlength="40" style="text-transform:uppercase"/>
+                </div>
+                <div>
+                  <label class="adm-label" for="f-name">Full Name *</label>
+                  <input id="f-name" class="adm-input" placeholder="Ali Raza" required maxlength="120"/>
+                </div>
+                <div>
+                  <label class="adm-label" for="f-role">Role</label>
+                  <input id="f-role" class="adm-input" placeholder="Web Development Intern" maxlength="120"/>
+                </div>
+                <div>
+                  <label class="adm-label" for="f-dept">Department</label>
+                  <input id="f-dept" class="adm-input" placeholder="Engineering" maxlength="120"/>
+                </div>
+                <div>
+                  <label class="adm-label" for="f-start">Start Date</label>
+                  <input id="f-start" type="date" class="adm-input"/>
+                </div>
+                <div>
+                  <label class="adm-label" for="f-end">End Date</label>
+                  <input id="f-end" type="date" class="adm-input"/>
+                </div>
+                <div>
+                  <label class="adm-label" for="f-issue">Issue Date</label>
+                  <input id="f-issue" type="date" class="adm-input"/>
+                </div>
+                <div>
+                  <label class="adm-label" for="f-status">Status</label>
+                  <select id="f-status" class="adm-input">
+                    <option value="Completed">Completed</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Revoked">Revoked</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="adm-label" for="f-photo">Photo URL <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+                  <input id="f-photo" class="adm-input" placeholder="https://..." maxlength="500"/>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-3 mt-7">
+                <button type="submit" id="save-btn" class="btn-primary px-8 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2.5">
+                  <span id="save-label">Save Intern</span>
+                  <span id="save-spinner" class="spinner-sm hidden"></span>
+                </button>
+                <button type="button" id="cancel-btn" class="btn-ghost px-8 py-3 rounded-xl font-semibold text-sm">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Search -->
+          <div class="mb-4">
+            <input id="search" class="adm-input" placeholder="Search by name, certificate number, role or department..."/>
+          </div>
+
+          <!-- Table -->
+          <div class="admin-card rounded-3xl overflow-hidden">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Certificate</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                    <th style="text-align:right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="rows"></tbody>
+              </table>
+            </div>
+            <div id="empty" class="text-center py-14 px-6 hidden">
+              <div class="text-3xl mb-3 body-muted"><i class="bi bi-inbox"></i></div>
+              <p class="body-muted text-sm">No intern records yet. Click <strong>Add Intern</strong> to create the first one.</p>
+            </div>
+            <div id="loading" class="text-center py-14">
+              <p class="body-muted text-sm">Loading records...</p>
+            </div>
+          </div>
+
+          <p class="body-muted text-xs mt-5">
+            Tip: the certificate number is what people type on the
+            <a href="/verify" class="footer-link">verification page</a>. Share a direct link as
+            <code>/verify?cert=NXS-2025-014</code> or put it in a QR code.
+          </p>
+
+        </div>
+        <!-- ═══════════ END INTERNS TAB ═══════════ -->
+
+
+        <!-- ═══════════ PROJECTS TAB ═══════════ -->
+        <div id="tab-projects" class="hidden">
+
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-7">
+            <div>
+              <h1 class="font-display text-2xl font-extrabold tracking-tight mb-1.5">Portfolio Projects</h1>
+              <p class="body-muted text-sm">Everything here appears in the Portfolio section of the website.</p>
+            </div>
+            <button id="p-add-btn" class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap">
+              <i class="bi bi-plus-lg mr-1.5"></i>Add Project
+            </button>
+          </div>
+
+          <!-- Project form -->
+          <div id="p-form-card" class="admin-card rounded-3xl p-6 md:p-7 mb-7 hidden">
+            <div class="flex items-center justify-between mb-6">
+              <h2 id="p-form-title" class="font-display text-lg font-extrabold tracking-tight">Add Project</h2>
+              <button id="p-form-close" class="btn-ghost w-9 h-9 rounded-full text-sm" aria-label="Close">&#10005;</button>
+            </div>
+
+            <form id="project-form">
+
+              <!-- ── Basics ── -->
+              <div class="form-section">
+                <div class="section-head">Basics</div>
+                <div class="grid sm:grid-cols-2 gap-5">
+                  <div class="sm:col-span-2">
+                    <label class="adm-label" for="p-title">Project Title *</label>
+                    <input id="p-title" class="adm-input" placeholder="Archipelago Retail E-commerce" required maxlength="140"/>
+                  </div>
+                  <div>
+                    <label class="adm-label" for="p-category">Category *</label>
+                    <input id="p-category" class="adm-input" list="category-list" placeholder="Web Dev" required maxlength="60"/>
+                    <datalist id="category-list">
+                      <option value="Web Dev"></option>
+                      <option value="Shopify"></option>
+                      <option value="Branding"></option>
+                      <option value="SEO"></option>
+                      <option value="Social Media"></option>
+                      <option value="App Development"></option>
+                    </datalist>
+                    <p class="hint">Used for the portfolio filter buttons.</p>
+                  </div>
+                  <div>
+                    <label class="adm-label" for="p-emoji">Emoji <span class="lc">(fallback if no image)</span></label>
+                    <input id="p-emoji" class="adm-input" placeholder="🌐" maxlength="8"/>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label class="adm-label" for="p-summary">Short Description <span class="lc">(shown on the card)</span></label>
+                    <input id="p-summary" class="adm-input" placeholder="Shopify rebuild focused on speed and conversions." maxlength="200"/>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label class="adm-label" for="p-description">Full Description <span class="lc">(shown when the project is opened)</span></label>
+                    <textarea id="p-description" class="adm-input" rows="5" placeholder="Tell the story: the problem, what you built, and how it went."></textarea>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label class="adm-label" for="p-tags">Tags <span class="lc">(comma separated)</span></label>
+                    <input id="p-tags" class="adm-input" placeholder="Shopify, UI/UX Design, CRO, Performance"/>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── Images ── -->
+              <div class="form-section">
+                <div class="section-head">Images</div>
+
+                <label class="adm-label">Cover Image <span class="lc">(the card picture)</span></label>
+                <div id="p-cover-drop" class="dropzone mb-2">
+                  <input type="file" id="p-cover-file" accept="image/*" hidden/>
+                  <div class="dz-empty">
+                    <i class="bi bi-cloud-arrow-up"></i>
+                    <p>Drop an image here, or <span class="dz-link">choose a file</span></p>
+                    <span class="dz-hint">PNG, JPG or WebP · up to 5MB</span>
+                  </div>
+                  <div class="dz-preview hidden">
+                    <img id="p-cover-img" alt="Cover preview"/>
+                    <button type="button" class="dz-remove" id="p-cover-remove" aria-label="Remove image">&#10005;</button>
+                  </div>
+                  <div class="dz-busy hidden"><span class="spinner-sm"></span><span>Uploading...</span></div>
+                </div>
+                <input id="p-cover-url" class="adm-input mb-6" placeholder="...or paste an image URL"/>
+
+                <label class="adm-label">Gallery <span class="lc">(extra images shown inside the project)</span></label>
+                <div id="p-gallery-drop" class="dropzone mb-3">
+                  <input type="file" id="p-gallery-file" accept="image/*" multiple hidden/>
+                  <div class="dz-empty">
+                    <i class="bi bi-images"></i>
+                    <p>Drop images here, or <span class="dz-link">choose files</span></p>
+                    <span class="dz-hint">You can add several at once</span>
+                  </div>
+                  <div class="dz-busy hidden"><span class="spinner-sm"></span><span>Uploading...</span></div>
+                </div>
+                <div id="p-gallery-list" class="gallery-grid"></div>
+              </div>
+
+              <!-- ── Client & results ── -->
+              <div class="form-section">
+                <div class="section-head">Client &amp; Results</div>
+                <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                  <div>
+                    <label class="adm-label" for="p-client">Client Name</label>
+                    <input id="p-client" class="adm-input" placeholder="Archipelago Retail" maxlength="140"/>
+                  </div>
+                  <div>
+                    <label class="adm-label" for="p-date">Project Date</label>
+                    <input id="p-date" type="date" class="adm-input"/>
+                  </div>
+                </div>
+
+                <label class="adm-label">Results <span class="lc">(the numbers you want to show off)</span></label>
+                <div id="p-results-list" class="flex flex-col gap-3 mb-3"></div>
+                <button type="button" id="p-add-result" class="btn-ghost px-4 py-2 rounded-xl text-xs font-semibold">
+                  <i class="bi bi-plus-lg mr-1"></i>Add a result
+                </button>
+              </div>
+
+              <!-- ── Publishing ── -->
+              <div class="form-section">
+                <div class="section-head">Publishing</div>
+                <div class="grid sm:grid-cols-2 gap-5">
+                  <div class="sm:col-span-2">
+                    <label class="adm-label" for="p-live">Live Project URL <span class="lc">(optional)</span></label>
+                    <input id="p-live" class="adm-input" placeholder="https://client-website.com"/>
+                    <p class="hint">Adds a "View Live Project" button. Leave empty to hide it.</p>
+                  </div>
+                  <div>
+                    <label class="adm-label" for="p-order">Display Order</label>
+                    <input id="p-order" type="number" class="adm-input" value="0" min="0" max="999"/>
+                    <p class="hint">Lower numbers appear first.</p>
+                  </div>
+                  <div class="flex flex-col justify-end gap-3 pb-1">
+                    <label class="switch">
+                      <input type="checkbox" id="p-featured"/>
+                      <span class="switch-track"><span class="switch-dot"></span></span>
+                      <span class="switch-label">Featured <span class="lc">— pin to the top</span></span>
+                    </label>
+                    <label class="switch">
+                      <input type="checkbox" id="p-published" checked/>
+                      <span class="switch-track"><span class="switch-dot"></span></span>
+                      <span class="switch-label">Published <span class="lc">— visible on the site</span></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-3 mt-2">
+                <button type="submit" id="p-save-btn" class="btn-primary px-8 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2.5">
+                  <span id="p-save-label">Save Project</span>
+                  <span id="p-save-spinner" class="spinner-sm hidden"></span>
+                </button>
+                <button type="button" id="p-cancel-btn" class="btn-ghost px-8 py-3 rounded-xl font-semibold text-sm">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Search -->
+          <div class="mb-4">
+            <input id="p-search" class="adm-input" placeholder="Search projects by title, category, client or tag..."/>
+          </div>
+
+          <!-- Project list -->
+          <div id="p-cards" class="project-admin-grid"></div>
+
+          <div id="p-empty" class="admin-card rounded-3xl text-center py-14 px-6 hidden">
+            <div class="text-3xl mb-3 body-muted"><i class="bi bi-collection"></i></div>
+            <p class="body-muted text-sm">No projects yet. Click <strong>Add Project</strong> to create the first one.</p>
+          </div>
+          <div id="p-loading" class="admin-card rounded-3xl text-center py-14">
+            <p class="body-muted text-sm">Loading projects...</p>
+          </div>
+
+          <p class="body-muted text-xs mt-5">
+            Tip: projects appear in the <a href="/#portfolio" class="footer-link">Portfolio section</a> of the site,
+            newest first within each order number. Featured projects are pinned to the top.
+          </p>
+
+        </div>
+        <!-- ═══════════ END PROJECTS TAB ═══════════ -->
+
+        </section>
+
+      </div>
+    </main>
+
+    <footer class="admin-foot footer-section pt-6 pb-6">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="footer-divider border-t pt-5 text-center text-sm body-muted">
+          <span>&copy; 2024 Nexyra Studio — Admin</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="assets/js/admin.js"></script>
+  <script src="assets/js/admin-projects.js"></script>
+</body>
+</html>
