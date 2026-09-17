@@ -1,0 +1,14 @@
+{
+  "name": "nexyra-studio-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Nexyra Studio agency website with serverless email and certificate verification APIs",
+  "scripts": {
+    "dev": "node dev-server.mjs",
+    "dev:vercel": "vercel dev --listen 3000"
+  },
+  "devDependencies": {
+    "vercel": "^59.19.0"
+  }
+}
