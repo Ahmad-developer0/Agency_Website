@@ -7,12 +7,12 @@ place, so use whichever is convenient.
 
 # Way 1 — The admin panel (easiest)
 
-Open **`/admin.html`** on the site, type the admin password, and manage everything
-from there. No Supabase login needed.
+Open **`/staff-portal`** on the site, type the admin password, and manage
+everything from there. No Supabase login needed.
 
 ```
-Local:       http://localhost:3000/admin.html
-Production:  https://your-site.com/admin.html
+Local:       http://localhost:3000/staff-portal
+Production:  https://your-site.com/staff-portal
 ```
 
 ### Add an intern
@@ -163,8 +163,8 @@ Pick something long. Anyone with this password can add, edit and delete records.
 
 ## Security notes
 
-- `admin.html` is protected by the password check inside the API, not by hiding
-  the page — the page itself shows nothing until the API accepts the password.
+- The panel is protected by the password check inside the API, not by hiding the
+  page — it shows nothing until the API accepts the password.
 - The page carries `noindex, nofollow`, so search engines will not list it.
 - A wrong password is delayed by about half a second, which makes guessing at
   scale impractical.

@@ -24,25 +24,29 @@
   to = "/verify.html"
   status = 200
 
-# Admin panel lives at an unguessable path.
-# /admin.html itself is blocked below so only this path works.
+# The admin panel's file is named staff-portal.html, so this is
+# just the extensionless form of it.
 [[redirects]]
   from = "/staff-portal"
-  to = "/admin.html"
+  to = "/staff-portal.html"
   status = 200
 
-# Hide the real filename — anyone typing /admin.html is sent home.
-[[redirects]]
-  from = "/admin.html"
-  to = "/"
-  status = 301
-  force = true
-
+# Old guesses at the admin path go home rather than revealing anything.
 [[redirects]]
   from = "/admin"
   to = "/"
-  status = 301
-  force = true
+  status = 302
+
+[[redirects]]
+  from = "/admin.html"
+  to = "/"
+  status = 302
+
+# ── 404 ──
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
 
 # ── Headers ──
 [[headers]]
