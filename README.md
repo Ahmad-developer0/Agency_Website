@@ -36,7 +36,7 @@ four variables the site needs.
 ```
 index.html          Main site
 verify.html         Public certificate verification  → /verify
-admin.html          Intern records admin             → /staff-portal
+staff-portal.html   Admin panel: interns + projects  → /staff-portal
 
 lib/                Logic, shared by both platforms
   verify-core.js      certificate lookup

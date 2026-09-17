@@ -18,7 +18,7 @@ Replace `your-site.com` with your real domain (or the
 | **Admin panel** | `https://your-site.com/staff-portal` | you and your team only |
 | Direct verify (QR codes) | `https://your-site.com/verify?cert=NXS-2025-014` | opens already verified |
 
-`/admin.html` and `/admin` both redirect to the home page, so the panel is only
+`/admin` and `/admin.html` both redirect to the home page, so the panel is only
 reachable at `/staff-portal`. That path is also excluded from search engines.
 
 ---

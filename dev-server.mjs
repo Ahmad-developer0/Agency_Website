@@ -119,10 +119,9 @@ const server = createServer(async (req, res) => {
   }
 
   // ---- Route aliases, mirroring netlify.toml / vercel.json ----
-  if (pathname === "/staff-portal") pathname = "/admin.html";
-  else if (pathname === "/admin" || pathname === "/admin.html") {
-    // the real filename is hidden in production too
-    res.statusCode = 301;
+  // Old guesses at the admin path go home rather than revealing anything.
+  if (pathname === "/admin" || pathname === "/admin.html") {
+    res.statusCode = 302;
     res.setHeader("Location", "/");
     return res.end();
   }
@@ -143,9 +142,17 @@ const server = createServer(async (req, res) => {
     res.setHeader("Cache-Control", "no-store");
     res.status(200).send(content);
   } catch {
-    res.status(404);
-    res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.send("<h1>404 — Not found</h1><p><a href='/'>Home</a> &middot; <a href='/verify.html'>Verify a certificate</a></p>");
+    // Same 404 page the hosts serve
+    try {
+      const page = await readFile(join(ROOT, "404.html"));
+      res.status(404);
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.send(page);
+    } catch {
+      res.status(404);
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.send("<h1>404 — Not found</h1><p><a href='/'>Home</a></p>");
+    }
   }
 });
 

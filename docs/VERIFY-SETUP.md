@@ -37,7 +37,7 @@ SUPABASE_SERVICE_KEY  = eyJhbGciOi...   (the service_role key)
 ADMIN_PASSWORD        = a long password of your choice
 ```
 
-`ADMIN_PASSWORD` is what opens `admin.html`, where interns are added.
+`ADMIN_PASSWORD` is what opens `/staff-portal`, where interns are added.
 See [ADMIN-GUIDE.md](ADMIN-GUIDE.md).
 
 Select **Production**, **Preview** and **Development**, then **Save** and redeploy
