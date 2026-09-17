@@ -1,11 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null,
   "cleanUrls": true,
   "rewrites": [
     { "source": "/staff-portal", "destination": "/admin.html" }
   ],
   "redirects": [
-    { "source": "/admin.html", "destination": "/", "permanent": true },
     { "source": "/admin", "destination": "/", "permanent": true }
   ],
   "headers": [

@@ -1,0 +1,9 @@
+node_modules
+netlify
+netlify.toml
+dev-server.mjs
+docs
+*.md
+.env*
+.vscode
+.DS_Store
