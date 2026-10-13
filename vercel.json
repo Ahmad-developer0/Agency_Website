@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": null,
+  "buildCommand": "echo 'Static site: run npm run build locally before deploying'",
   "outputDirectory": ".",
   "framework": null,
   "cleanUrls": true,
