@@ -3,6 +3,7 @@
  * All logic lives in lib/verify-core.js so Netlify can share it.
  */
 import { verifyCertificate } from "../lib/verify-core.js";
+import { clientIp } from "../lib/attempt-guard.js";
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -12,6 +13,6 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(200).end();
   if (req.method !== "POST") return res.status(405).json({ success: false, error: "POST only" });
 
-  const { status, body } = await verifyCertificate(req.body || {});
+  const { status, body } = await verifyCertificate(req.body || {}, clientIp(req.headers, req.socket && req.socket.remoteAddress));
   return res.status(status).json(body);
 }

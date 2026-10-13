@@ -48,6 +48,8 @@ const MIME = {
   ".mjs":  "text/javascript; charset=utf-8",
   ".css":  "text/css; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".xml":  "application/xml; charset=utf-8",
+  ".txt":  "text/plain; charset=utf-8",
   ".png":  "image/png",
   ".jpg":  "image/jpeg",
   ".jpeg": "image/jpeg",
@@ -116,6 +118,13 @@ const server = createServer(async (req, res) => {
       if (!res.headersSent) res.status(500).json({ success: false, error: "Function error" });
     }
     return;
+  }
+
+  // ---- Server code is never served as a file (same as the hosts) ----
+  if (pathname.startsWith("/lib/")) {
+    res.statusCode = 302;
+    res.setHeader("Location", "/");
+    return res.end();
   }
 
   // ---- Route aliases, mirroring netlify.toml / vercel.json ----

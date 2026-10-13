@@ -5,14 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Verify Internship Certificate | Nexyra Studio</title>
   <meta name="description" content="Verify the authenticity of a Nexyra Studio internship certificate by entering the certificate number." />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="canonical" href="https://nexyrastudio.com/verify" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nexyra Studio" />
+  <meta property="og:title" content="Verify Internship Certificate | Nexyra Studio" />
+  <meta property="og:description" content="Verify the authenticity of a Nexyra Studio internship certificate by entering the certificate number." />
+  <meta property="og:url" content="https://nexyrastudio.com/verify" />
+  <meta property="og:image" content="https://nexyrastudio.com/public/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nexyra Studio logo with the tagline Digital Marketing, Web and App Development" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Verify Internship Certificate | Nexyra Studio" />
+  <meta name="twitter:description" content="Verify the authenticity of a Nexyra Studio internship certificate by entering the certificate number." />
+  <meta name="twitter:image" content="https://nexyrastudio.com/public/images/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></noscript>
   <link rel="stylesheet" href="/assets/css/style.css"/>
-  <link href="/public/images/favicon.png" rel="icon">
-  <link href="/public/images/favicon.png" rel="apple-touch-icon">
+  <link href="/public/images/favicon-round.png?v=3" rel="icon" type="image/png">
+  <link href="/public/images/apple-touch-icon.png" rel="apple-touch-icon">
 
   <style>
     /* ===== Verification page specific ===== */
@@ -120,6 +134,7 @@
     }
     @keyframes verify-spin { to { transform: rotate(360deg); } }
   </style>
+  <link rel="stylesheet" href="/assets/css/tailwind.css"/>
 </head>
 <body class="light-mode">
 
@@ -171,6 +186,14 @@
     <main class="verify-main relative z-10 pt-24 md:pt-32 pb-12 md:pb-16 px-4 sm:px-6">
       <div class="max-w-3xl mx-auto">
 
+        <nav aria-label="Breadcrumb" class="breadcrumb justify-center">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li aria-current="page">Verify Certificate</li>
+          </ol>
+        </nav>
+        <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nexyrastudio.com/"}, {"@type": "ListItem", "position": 2, "name": "Verify Certificate", "item": "https://nexyrastudio.com/verify"}]}</script>
+
         <!-- Heading -->
         <div class="text-center mb-8">
           <span class="badge-pill inline-block px-4 py-1.5 rounded-full text-xs font-semibold mb-5">Certificate Verification</span>
@@ -178,13 +201,24 @@
             Verify an <span class="accent-text">Internship Certificate</span>
           </h1>
           <p class="body-muted text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            Enter the certificate number printed on the Nexyra Studio internship certificate to confirm that it is genuine and to see the record it belongs to.
+            Enter the intern's name and the certificate number printed on the Nexyra Studio internship certificate to confirm that it is genuine and to see the record it belongs to.
           </p>
         </div>
 
         <!-- Search card -->
         <div class="verify-card rounded-3xl p-6 md:p-8 mb-8">
           <form id="verify-form" autocomplete="off">
+            <label for="name-input" class="field-label block mb-2.5">Intern's Full Name</label>
+            <input
+              id="name-input"
+              name="name"
+              type="text"
+              required
+              maxlength="120"
+              autocomplete="off"
+              placeholder="As printed on the certificate"
+              class="verify-input w-full px-4 py-3.5 rounded-xl text-base font-semibold mb-4"
+            />
             <label for="cert-input" class="field-label block mb-2.5">Certificate / Batch Number</label>
             <div class="flex flex-col sm:flex-row gap-3">
               <input
@@ -207,6 +241,7 @@
             </div>
             <p class="body-muted text-xs mt-3">
               The number is printed at the bottom of the certificate, for example <strong>NXS-2025-014</strong>.
+              For privacy, a record is only shown when the name and number both match.
             </p>
           </form>
         </div>
@@ -222,13 +257,23 @@
       <div class="max-w-[100rem] mx-auto px-4 sm:px-6">
         <div class="footer-divider border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm body-muted text-center">
           <span>&copy; 2024 Nexyra Studio. All rights reserved.</span>
-          <span>Questions about a certificate? <a href="mailto:info.ahmadinnovate@gmail.com" class="footer-link">info.ahmadinnovate@gmail.com</a></span>
+          <span>Questions about a certificate? <a href="mailto:support@nexyrastudio.com" class="footer-link">support@nexyrastudio.com</a></span>
         </div>
+        <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4 text-sm">
+          <li><a href="/" class="footer-link">Home</a></li>
+          <li><a href="/#services" class="footer-link">Services</a></li>
+          <li><a href="/#contact" class="footer-link">Contact</a></li>
+          <li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li>
+          <li><a href="/cookie-policy" class="footer-link">Cookie Policy</a></li>
+          <li><a href="#" data-cookie-settings class="footer-link">Cookie Settings</a></li>
+        </ul>
       </div>
     </footer>
 
   </div>
 
+  <script src="/assets/js/site-config.js"></script>
+  <script src="/assets/js/consent.js"></script>
   <script src="/assets/js/verify.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
 User-agent: *
-Disallow: /staff-portal
 Allow: /
+Disallow: /staff-portal
+Disallow: /thank-you
+Disallow: /api/
+
+Sitemap: https://nexyrastudio.com/sitemap.xml

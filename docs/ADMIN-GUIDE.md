@@ -142,7 +142,7 @@ NXS-2025-001    NXS = Nexyra Studio, 2025 = year, 001 = counter
 Put the number on the printed certificate, and optionally a QR code pointing to:
 
 ```
-https://your-site.com/verify.html?cert=NXS-2025-001
+https://your-site.com/verify.html?cert=NXS-2025-001&name=Ali%20Khan
 ```
 
 That link verifies the certificate the moment it opens — no typing needed.

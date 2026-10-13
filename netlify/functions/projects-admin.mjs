@@ -2,6 +2,7 @@
  * Netlify function — project admin (CRUD + image upload).
  */
 import { projectsAdmin } from "../../lib/projects-core.js";
+import { clientIp } from "../../lib/attempt-guard.js";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -10,7 +11,7 @@ const CORS = {
   "Content-Type": "application/json",
 };
 
-export default async (request) => {
+export default async (request, context) => {
   if (request.method === "OPTIONS") return new Response("", { status: 200, headers: CORS });
   if (request.method !== "POST") {
     return Response.json({ success: false, error: "POST only" }, { status: 405, headers: CORS });
@@ -19,6 +20,6 @@ export default async (request) => {
   let input = {};
   try { input = await request.json(); } catch { /* empty body */ }
 
-  const { status, body } = await projectsAdmin(input);
+  const { status, body } = await projectsAdmin(input, (context && context.ip) || clientIp(request.headers));
   return new Response(JSON.stringify(body), { status, headers: CORS });
 };
