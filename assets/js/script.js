@@ -63,17 +63,17 @@ const servicesData = [
     ],
   },
   {
-    icon: "📱",
-    title: "Social Media Marketing",
+    icon: "📈",
+    title: "Digital Marketing",
     description:
-      "Data-driven social strategies that build communities, drive engagement, and convert followers into loyal brand advocates.",
+      "Full-funnel digital marketing that reaches the right audience on every channel — social media, search ads and email — and turns clicks into leads and sales.",
     keypoints: [
-      "Platform strategy & content calendar",
-      "Content creation & copywriting",
-      "Community management & engagement",
-      "Paid social advertising (Meta, TikTok, LinkedIn)",
+      "Digital marketing strategy & campaign planning",
+      "Social media marketing & content creation",
+      "Paid ads (Google, Meta, TikTok, LinkedIn)",
+      "Email marketing & automation",
       "Influencer partnership coordination",
-      "Social analytics & monthly reporting",
+      "Analytics, conversion tracking & monthly reporting",
     ],
   },
   {
@@ -140,7 +140,7 @@ const testimonialsData = [
     name: "Sarah Widyaningrum",
     title: "CEO, NovaTech Indonesia",
     description:
-      "Art Developer transformed our digital presence. Within 6 months, organic traffic grew 280% and leads tripled. Their strategic approach is unlike any agency we've worked with.",
+      "Nexyra Studio transformed our digital presence. Within 6 months, organic traffic grew 280% and leads tripled. Their strategic approach is unlike any agency we've worked with.",
     stars: 5,
   },
   {
@@ -172,7 +172,7 @@ const testimonialsData = [
     name: "Rini Susanti",
     title: "Head of Digital, Garuda Finance",
     description:
-      "Art Developer feels like part of our internal team. Their email automation system alone generates 30% of our monthly revenue. Absolutely outstanding.",
+      "Nexyra Studio feels like part of our internal team. Their email automation system alone generates 30% of our monthly revenue. Absolutely outstanding.",
     stars: 5,
   },
   {
@@ -180,7 +180,7 @@ const testimonialsData = [
     name: "Kevin Wijaya",
     title: "Founder, Kopi Rimba",
     description:
-      "Launched our D2C brand from scratch with Art Developer. Within 3 months we hit 1,000 subscribers and the brand looks world-class. Best investment ever.",
+      "Launched our D2C brand from scratch with Nexyra Studio. Within 3 months we hit 1,000 subscribers and the brand looks world-class. Best investment ever.",
     stars: 5,
   },
   {
@@ -196,7 +196,7 @@ const testimonialsData = [
     name: "Budi Santoso",
     title: "CEO, Maju Bersama UMKM",
     description:
-      "Before Art Developer, our digital presence was basically non-existent. Now we rank on page 1 for our main keywords and get 50+ inbound inquiries monthly.",
+      "Before Nexyra Studio, our digital presence was basically non-existent. Now we rank on page 1 for our main keywords and get 50+ inbound inquiries monthly.",
     stars: 5,
   },
   {
@@ -212,7 +212,7 @@ const testimonialsData = [
     name: "Rizky Firmansyah",
     title: "Director, Edu Prima Institute",
     description:
-      "Our enrollment rates increased 67% after Art Developer redesigned our website and launched our Google Ads campaigns. The results speak for themselves.",
+      "Our enrollment rates increased 67% after Nexyra Studio redesigned our website and launched our Google Ads campaigns. The results speak for themselves.",
     stars: 5,
   },
   {
@@ -220,7 +220,7 @@ const testimonialsData = [
     name: "Mega Lestari",
     title: "Co-Founder, Bumbu Nusantara",
     description:
-      "TikTok strategy by Art Developer went viral — one campaign hit 8M views and we sold out our entire stock in 48 hours. Unbelievable team.",
+      "TikTok strategy by Nexyra Studio went viral — one campaign hit 8M views and we sold out our entire stock in 48 hours. Unbelievable team.",
     stars: 5,
   },
   {
@@ -780,7 +780,7 @@ function initNavbar() {
 
 /* =================== ACTIVE NAV =================== */
 function updateActiveNav() {
-  const sections = ["hero", "about", "services", "portfolio", "contact"];
+  const sections = ["hero", "about", "services", "portfolio", "faq", "contact"];
   const navLinks = document.querySelectorAll(".nav-link");
   let current = "";
 
@@ -820,14 +820,90 @@ function observeReveal() {
 // Admin WhatsApp number (with country code, no + sign)
 const ADMIN_WHATSAPP = "923157558885";
 
-// Email API endpoint (Vercel serverless function)
+// Email API endpoint (serverless function, same on Netlify and Vercel)
 const MAIL_API = "/api/send";
+
+/* =================== SPAM PROTECTION (Cloudflare Turnstile) =================== */
+// The Turnstile script calls this once it has loaded (see index.html)
+const turnstileWidgets = {};
+
+window.nxTurnstileReady = function () {
+  const key = (window.NEXYRA_CONFIG || {}).TURNSTILE_SITE_KEY;
+  if (!key || !window.turnstile) return;
+  document.querySelectorAll(".form-turnstile").forEach((el) => {
+    turnstileWidgets[el.dataset.form] = window.turnstile.render(el, {
+      sitekey: key,
+      theme: document.body.classList.contains("dark-mode") ? "dark" : "light",
+    });
+  });
+};
+
+function turnstileToken(formType) {
+  const id = turnstileWidgets[formType];
+  return id !== undefined && window.turnstile ? window.turnstile.getResponse(id) || "" : "";
+}
+
+function resetTurnstile(formType) {
+  const id = turnstileWidgets[formType];
+  if (id !== undefined && window.turnstile) window.turnstile.reset(id);
+}
+
+/* =================== FORM SUBMISSION =================== */
+// Sends a booking/contact form, then moves to the thank-you page.
+// Spam-check and consent failures stay on the form with a message.
+async function submitLead(form, type, payload, whatsappURL, details) {
+  const btn = form.querySelector('button[type="submit"]');
+  const errorEl = form.querySelector(".form-error");
+  const idleHTML = btn.innerHTML;
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+  }
+  errorEl.hidden = true;
+
+  const token = turnstileToken(type);
+  if (turnstileWidgets[type] !== undefined && !token) {
+    showError("Please complete the security check above the button.");
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="bi bi-hourglass-split mr-2" aria-hidden="true"></i> Sending...';
+
+  let res = {};
+  try {
+    const resp = await fetch(MAIL_API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...payload, type, consent: form.consent.checked, turnstileToken: token }),
+    });
+    res = await resp.json().catch(() => ({}));
+  } catch (err) {
+    console.warn("Mail failed:", err);
+  }
+
+  if (res.code === "captcha" || res.code === "consent") {
+    showError(res.error);
+    btn.disabled = false;
+    btn.innerHTML = idleHTML;
+    resetTurnstile(type);
+    return;
+  }
+
+  try {
+    sessionStorage.setItem(
+      "nx-thanks",
+      JSON.stringify({ type, ...details, whatsappURL, emailSent: !!res.success })
+    );
+  } catch (e) { /* the thank-you page falls back to a generic message */ }
+  location.href = "/thank-you";
+}
 
 /* =================== BOOKING FORM =================== */
 function handleBooking(e) {
   e.preventDefault();
   const form = e.target;
-  const btn = document.getElementById("booking-submit");
   const name = form.name.value.trim();
   const email = form.email.value.trim();
   const phone = form.phone.value.trim() || "N/A";
@@ -837,28 +913,6 @@ function handleBooking(e) {
   const time = form.time.value;
   const message = form.message.value.trim() || "N/A";
 
-  // Disable button while submitting
-  btn.disabled = true;
-  btn.innerHTML = '<i class="bi bi-hourglass-split mr-2" aria-hidden="true"></i> Booking...';
-
-  // ── 1. Send Fancy Email (Admin + Customer Auto-Reply) ──
-  const emailPromise = fetch(MAIL_API, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      type: "booking",
-      name: name,
-      email: email,
-      phone: phone,
-      company: company,
-      service: service,
-      date: date,
-      time: time,
-      message: message,
-    }),
-  }).then((res) => res.json());
-
-  // ── 2. Send WhatsApp to Admin ──
   const whatsappMsg =
     `*New Meeting Booking!*\n\n` +
     `*Name:* ${name}\n` +
@@ -872,52 +926,13 @@ function handleBooking(e) {
 
   const whatsappURL = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(whatsappMsg)}`;
 
-  // Wait for email, then show result
-  emailPromise
-    .then((res) => {
-      showBookingSuccess(form, name, email, date, time, whatsappURL, res.success);
-    })
-    .catch((err) => {
-      console.warn("Mail failed:", err);
-      showBookingSuccess(form, name, email, date, time, whatsappURL, false);
-    });
-}
-
-function showBookingSuccess(form, name, email, date, time, whatsappURL, emailSent) {
-  const emailNote = emailSent
-    ? `<div class="flex items-center justify-center gap-2 mb-1">
-         <i class="bi bi-envelope-check" style="color:var(--accent)"></i>
-         <span class="text-sm" style="color:var(--accent)">Email notification sent to admin</span>
-       </div>`
-    : "";
-
-  form.innerHTML = `
-    <div class="booking-success text-center py-8">
-      <div class="success-icon">
-        <i class="bi bi-check-lg" style="font-size:2rem;color:var(--accent)"></i>
-      </div>
-      <h3 class="font-display font-extrabold text-2xl mb-3">Meeting Booked!</h3>
-      <p class="body-muted mb-2">Thank you, <strong>${name}</strong>.</p>
-      <p class="body-muted mb-4 text-sm">We'll confirm your <strong>${time}</strong> slot on <strong>${date}</strong> within 24 hours via email at <strong>${email}</strong>.</p>
-      ${emailNote}
-      <div class="flex flex-wrap gap-3 justify-center mt-6">
-        <a href="${whatsappURL}" target="_blank" class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105">
-          <i class="bi bi-whatsapp mr-2" aria-hidden="true"></i> Confirm on WhatsApp
-        </a>
-        <button onclick="resetBookingForm()" class="btn-ghost px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105">
-          Book Another
-        </button>
-      </div>
-    </div>
-  `;
-
-  // Auto-open WhatsApp in new tab so admin gets notified
-  window.open(whatsappURL, "_blank");
-}
-
-function resetBookingForm() {
-  location.hash = "#book-meeting";
-  location.reload();
+  submitLead(
+    form,
+    "booking",
+    { name, email, phone, company, service, date, time, message },
+    whatsappURL,
+    { name, email, date, time }
+  );
 }
 
 function initBookingDate() {
@@ -931,32 +946,12 @@ function initBookingDate() {
 function handleContact(e) {
   e.preventDefault();
   const form = e.target;
-  const btn = document.getElementById("contact-submit");
   const name = form.name.value.trim();
   const email = form.email.value.trim();
   const phone = form.phone.value.trim() || "N/A";
   const subject = form.subject.value;
   const message = form.message.value.trim();
 
-  // Disable button
-  btn.disabled = true;
-  btn.innerHTML = '<i class="bi bi-hourglass-split mr-2" aria-hidden="true"></i> Sending...';
-
-  // ── 1. Send Fancy Email (Admin + Customer Auto-Reply) ──
-  const emailPromise = fetch(MAIL_API, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      type: "contact",
-      name: name,
-      email: email,
-      phone: phone,
-      subject: subject,
-      message: message,
-    }),
-  }).then((res) => res.json());
-
-  // ── 2. Build WhatsApp message ──
   const whatsappMsg =
     `*New Contact Message!*\n\n` +
     `*Name:* ${name}\n` +
@@ -967,49 +962,7 @@ function handleContact(e) {
 
   const whatsappURL = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(whatsappMsg)}`;
 
-  emailPromise
-    .then((res) => {
-      showContactSuccess(form, name, whatsappURL, res.success);
-    })
-    .catch((err) => {
-      console.warn("Mail (contact) failed:", err);
-      showContactSuccess(form, name, whatsappURL, false);
-    });
-}
-
-function showContactSuccess(form, name, whatsappURL, emailSent) {
-  const emailNote = emailSent
-    ? `<div class="flex items-center justify-center gap-2 mb-1">
-         <i class="bi bi-envelope-check" style="color:var(--accent)"></i>
-         <span class="text-sm" style="color:var(--accent)">Email notification sent to admin</span>
-       </div>`
-    : "";
-
-  form.innerHTML = `
-    <div class="booking-success text-center py-8">
-      <div class="success-icon">
-        <i class="bi bi-check-lg" style="font-size:2rem;color:var(--accent)"></i>
-      </div>
-      <h3 class="font-display font-extrabold text-2xl mb-3">Message Sent!</h3>
-      <p class="body-muted mb-4">Thank you, <strong>${name}</strong>. We'll get back to you within 24 hours.</p>
-      ${emailNote}
-      <div class="flex flex-wrap gap-3 justify-center mt-6">
-        <a href="${whatsappURL}" target="_blank" class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105">
-          <i class="bi bi-whatsapp mr-2" aria-hidden="true"></i> Chat on WhatsApp
-        </a>
-        <button onclick="resetContactForm()" class="btn-ghost px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105">
-          Send Another
-        </button>
-      </div>
-    </div>
-  `;
-
-  window.open(whatsappURL, "_blank");
-}
-
-function resetContactForm() {
-  location.hash = "#contact";
-  location.reload();
+  submitLead(form, "contact", { name, email, phone, subject, message }, whatsappURL, { name, email });
 }
 
 /* =================== INIT =================== */

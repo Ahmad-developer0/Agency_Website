@@ -3,18 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexyra Studio Digital Marketing Agency</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Nexyra Studio | Digital Marketing, Web &amp; App Development Agency</title>
+  <meta name="description" content="Nexyra Studio is a digital agency in Pakistan offering branding, digital marketing, SEO, Shopify stores, web design and Android app development. Book a free 30-minute call." />
+  <link rel="canonical" href="https://nexyrastudio.com/" />
+
+  <!-- Link previews (WhatsApp, Facebook, LinkedIn, X) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nexyra Studio" />
+  <meta property="og:title" content="Nexyra Studio | Digital Marketing, Web &amp; App Development Agency" />
+  <meta property="og:description" content="Nexyra Studio is a digital agency in Pakistan offering branding, digital marketing, SEO, Shopify stores, web design and Android app development. Book a free 30-minute call." />
+  <meta property="og:url" content="https://nexyrastudio.com/" />
+  <meta property="og:image" content="https://nexyrastudio.com/public/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nexyra Studio logo with the tagline Digital Marketing, Web and App Development" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nexyra Studio | Digital Marketing, Web &amp; App Development Agency" />
+  <meta name="twitter:description" content="Nexyra Studio is a digital agency in Pakistan offering branding, digital marketing, SEO, Shopify stores, web design and Android app development. Book a free 30-minute call." />
+  <meta name="twitter:image" content="https://nexyrastudio.com/public/images/og-image.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nexyrastudio.com/#organization",
+      "name": "Nexyra Studio",
+      "url": "https://nexyrastudio.com/",
+      "logo": "https://nexyrastudio.com/public/images/apple-touch-icon.png",
+      "email": "support@nexyrastudio.com",
+      "telephone": "+92 315 7558885",
+      "foundingDate": "2023",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PK"
+      },
+      "employee": {
+        "@type": "Person",
+        "name": "Muhammad Ahmad Raza",
+        "jobTitle": "CEO",
+        "sameAs": [
+          "https://www.linkedin.com/in/ahmadinnovate/"
+        ]
+      },
+      "sameAs": [
+        "https://www.instagram.com/nexyra_studio/",
+        "https://www.linkedin.com/in/ahmadinnovate/",
+        "https://www.facebook.com/nexyrastudio",
+        "https://www.tiktok.com/@nexyra_studio"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nexyrastudio.com/#website",
+      "name": "Nexyra Studio",
+      "url": "https://nexyrastudio.com/",
+      "publisher": {
+        "@id": "https://nexyrastudio.com/#organization"
+      }
+    }
+  ]
+}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Orbitron:wght@400..900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <!-- Include Bootstrap Icons via CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></noscript>
 
   <link rel="stylesheet" href="/assets/css/style.css"/>
-  <link href="/public/images/favicon.png" rel="icon">
-  <link href="/public/images/favicon.png" rel="apple-touch-icon">
+  <link href="/public/images/favicon-round.png?v=3" rel="icon" type="image/png">
+  <link href="/public/images/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <link rel="stylesheet" href="/assets/css/tailwind.css"/>
 </head>
 <body class="light-mode">
 
@@ -53,8 +115,9 @@
       <li class="mobile-nav-item" style="--i:0"><a href="#about"     class="mobile-nav-link">About</a></li>
       <li class="mobile-nav-item" style="--i:1"><a href="#services"  class="mobile-nav-link">Services</a></li>
       <li class="mobile-nav-item" style="--i:2"><a href="#portfolio" class="mobile-nav-link">Portfolio</a></li>
-      <li class="mobile-nav-item" style="--i:3"><a href="#contact"   class="mobile-nav-link">Contact</a></li>
-      <li class="mobile-nav-item" style="--i:4">
+      <li class="mobile-nav-item" style="--i:3"><a href="#faq"       class="mobile-nav-link">FAQ</a></li>
+      <li class="mobile-nav-item" style="--i:4"><a href="#contact"   class="mobile-nav-link">Contact</a></li>
+      <li class="mobile-nav-item" style="--i:5">
         <a href="#book-meeting" class="btn-primary px-8 py-3 rounded-xl text-base font-semibold inline-block">Book a Meeting</a>
       </li>
     </ul>
@@ -76,6 +139,7 @@
         <li><a href="#about"     class="nav-link" data-section="about">About</a></li>
         <li><a href="#services"  class="nav-link" data-section="services">Services</a></li>
         <li><a href="#portfolio" class="nav-link" data-section="portfolio">Portfolio</a></li>
+        <li><a href="#faq"       class="nav-link" data-section="faq">FAQ</a></li>
         <li><a href="#contact"   class="nav-link" data-section="contact">Contact</a></li>
       </ul>
 
@@ -123,11 +187,11 @@
             <span class="w-2 h-2 rounded-full accent-dot animate-pulse"></span>
             Digital Marketing Agency
           </div>
-          <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-6 animate-fadein" style="animation-delay:.2s">
+          <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-6 animate-rise">
             We Create<br/><span class="accent-text">Digital Art</span><br/>That Converts
           </h1>
           <p class="text-lg leading-relaxed max-w-md mb-8 body-muted animate-fadein" style="animation-delay:.35s">
-            Nexyra Developer transforms brands into unforgettable digital experiences combining creative strategy, bold design, and data-driven marketing.
+            Nexyra Studio transforms brands into unforgettable digital experiences combining creative strategy, bold design, and data-driven marketing.
           </p>
           <div class="flex flex-wrap gap-4 animate-fadein" style="animation-delay:.5s">
             <a href="#services"  class="btn-primary px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-xl">Explore Services</a>
@@ -247,12 +311,28 @@
             We Are Digital <span class="accent-text">Architects</span> of Growth
           </h2>
           <p class="body-muted leading-relaxed mb-5">
-            Nexyra Developer is a full-service digital marketing agency founded with one mission: to help brands dominate their digital landscape. Since 2023, we've blended creativity with analytics to deliver measurable results.
+            Nexyra Studio is a full-service digital marketing agency founded with one mission: to help brands dominate their digital landscape. Since 2023, we've blended creativity with analytics to deliver measurable results.
           </p>
           <p class="body-muted leading-relaxed mb-8">
             From startups to Fortune 100+ companies, our cross-functional team of strategists, designers, and engineers craft bespoke digital experiences that captivate audiences and accelerate growth.
           </p>
           <a href="#services" class="btn-primary px-7 py-3.5 rounded-xl font-semibold inline-block transition-all duration-300 hover:scale-105">Discover Our Work</a>
+
+          <!-- Author bio -->
+          <div class="author-bio mt-10" itemscope itemtype="https://schema.org/Person">
+            <div class="author-avatar" aria-hidden="true">MA</div>
+            <div>
+              <div class="text-xs font-semibold uppercase tracking-wider accent-text mb-1">Meet the CEO</div>
+              <h3 class="font-display font-bold text-lg mb-1" itemprop="name">Muhammad Ahmad Raza</h3>
+              <div class="text-sm body-muted mb-3"><span itemprop="jobTitle">CEO</span>, <span itemprop="worksFor">Nexyra Studio</span></div>
+              <p class="body-muted text-sm leading-relaxed mb-3" itemprop="description">
+                Muhammad Ahmad Raza leads Nexyra Studio, the Pakistan-based digital agency behind this website.
+              </p>
+              <a href="https://www.linkedin.com/in/ahmadinnovate/" target="_blank" rel="noopener" class="author-link" itemprop="sameAs">
+                <i class="bi bi-linkedin" aria-hidden="true"></i> Connect on LinkedIn
+              </a>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -266,9 +346,27 @@
     <div class="max-w-[100rem] mx-auto px-4 sm:px-6">
       <div class="text-center mb-16 reveal-up">
         <div class="section-label mb-4">Why Choose Us</div>
-        <h2 class="font-display font-extrabold text-4xl md:text-5xl leading-tight">The <span class="accent-text">Nexyra Dev</span> Difference</h2>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl leading-tight">The <span class="accent-text">Nexyra Studio</span> Difference</h2>
       </div>
-      <div class="grid md:grid-cols-3 gap-6" id="why-grid"><!-- filled by JS --></div>
+      <div class="grid md:grid-cols-3 gap-6" id="why-grid"><!-- pre-rendered by scripts/prerender.mjs -->
+    <div class="feature-card reveal-up" style="transition-delay: 0s">
+      <div class="card-icon">🎯</div>
+      <h3 class="font-display font-bold text-xl mb-3">Strategy-First Approach</h3>
+      <p class="body-muted text-sm leading-relaxed">Every campaign begins with rigorous market research and audience analysis. We don't guess — we build on data, insights, and proven frameworks tailored to your unique business context.</p>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.1s">
+      <div class="card-icon">⚡</div>
+      <h3 class="font-display font-bold text-xl mb-3">Agile & Fast Execution</h3>
+      <p class="body-muted text-sm leading-relaxed">We move at the speed of digital. Our agile team ships campaigns, tests rapidly, and iterates based on real-time performance data — so you never miss a market opportunity.</p>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.2s">
+      <div class="card-icon">📊</div>
+      <h3 class="font-display font-bold text-xl mb-3">Transparent Reporting</h3>
+      <p class="body-muted text-sm leading-relaxed">No vanity metrics. You get clear, honest dashboards showing exactly what's working, what's not, and how we're evolving strategy to maximize your return on investment.</p>
+    </div>
+  </div>
     </div>
   </section>
 
@@ -281,7 +379,31 @@
         <div class="section-label mb-4">Our Benefits</div>
         <h2 class="font-display font-extrabold text-4xl md:text-5xl leading-tight">What You <span class="accent-text">Gain</span> With Us</h2>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="benefits-grid"><!-- filled by JS --></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="benefits-grid"><!-- pre-rendered by scripts/prerender.mjs -->
+    <div class="feature-card reveal-up" style="transition-delay: 0s">
+      <div class="card-icon">🚀</div>
+      <h3 class="font-display font-bold text-lg mb-2">Accelerated Growth</h3>
+      <p class="body-muted text-sm leading-relaxed">Our proven frameworks scale brands from zero to market leaders, compressing years of organic growth into targeted, accelerated campaigns.</p>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.1s">
+      <div class="card-icon">🔒</div>
+      <h3 class="font-display font-bold text-lg mb-2">Brand Safety</h3>
+      <p class="body-muted text-sm leading-relaxed">Your reputation is sacred. Every piece of content, every placement, every campaign protects and elevates your brand identity.</p>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.2s">
+      <div class="card-icon">💡</div>
+      <h3 class="font-display font-bold text-lg mb-2">Creative Excellence</h3>
+      <p class="body-muted text-sm leading-relaxed">Award-winning creative team producing content that stops the scroll, sparks emotion, and drives meaningful action from your audience.</p>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.30000000000000004s">
+      <div class="card-icon">🤝</div>
+      <h3 class="font-display font-bold text-lg mb-2">Dedicated Partnership</h3>
+      <p class="body-muted text-sm leading-relaxed">We work as an extension of your team — not just a vendor. Your goals are our goals, and we're committed to your long-term success.</p>
+    </div>
+  </div>
     </div>
   </section>
 
@@ -295,7 +417,61 @@
         <h2 class="font-display font-extrabold text-4xl md:text-5xl leading-tight">What We <span class="accent-text">Offer</span></h2>
         <p class="body-muted mt-4 max-w-xl mx-auto">Comprehensive digital solutions tailored to your unique business goals and growth ambitions.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid"><!-- filled by JS --></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid"><!-- pre-rendered by scripts/prerender.mjs -->
+    <div class="feature-card reveal-up" style="transition-delay: 0s; cursor: pointer;" onclick="openServiceModal(0)">
+      <div class="card-icon">🎨</div>
+      <h3 class="font-display font-bold text-xl mb-3">Brand Identity Design</h3>
+      <p class="body-muted text-sm leading-relaxed mb-4">We craft comprehensive visual identities that communicate your brand's essence, values, and personal...</p>
+      <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
+        Learn more <span>→</span>
+      </div>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.08s; cursor: pointer;" onclick="openServiceModal(1)">
+      <div class="card-icon">📈</div>
+      <h3 class="font-display font-bold text-xl mb-3">Digital Marketing</h3>
+      <p class="body-muted text-sm leading-relaxed mb-4">Full-funnel digital marketing that reaches the right audience on every channel — social media, searc...</p>
+      <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
+        Learn more <span>→</span>
+      </div>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.16s; cursor: pointer;" onclick="openServiceModal(2)">
+      <div class="card-icon">🔍</div>
+      <h3 class="font-display font-bold text-xl mb-3">SEO & Content Marketing</h3>
+      <p class="body-muted text-sm leading-relaxed mb-4">Dominate search results with technical SEO excellence and compelling content that attracts, educates...</p>
+      <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
+        Learn more <span>→</span>
+      </div>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.24s; cursor: pointer;" onclick="openServiceModal(3)">
+      <div class="card-icon">🛍️</div>
+      <h3 class="font-display font-bold text-xl mb-3">Shopify Store Development</h3>
+      <p class="body-muted text-sm leading-relaxed mb-4">Conversion-focused Shopify stores built to sell — custom themes, seamless checkout, and the integrat...</p>
+      <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
+        Learn more <span>→</span>
+      </div>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.32s; cursor: pointer;" onclick="openServiceModal(4)">
+      <div class="card-icon">🌐</div>
+      <h3 class="font-display font-bold text-xl mb-3">Web Design & Development</h3>
+      <p class="body-muted text-sm leading-relaxed mb-4">High-performance, conversion-optimized websites and landing pages built with cutting-edge technology...</p>
+      <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
+        Learn more <span>→</span>
+      </div>
+    </div>
+  
+    <div class="feature-card reveal-up" style="transition-delay: 0.4s; cursor: pointer;" onclick="openServiceModal(5)">
+      <div class="card-icon">📧</div>
+      <h3 class="font-display font-bold text-xl mb-3">App Development</h3>
+      <p class="body-muted text-sm leading-relaxed mb-4">High-performance Android applications designed to deliver exceptional user experiences and scalable ...</p>
+      <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
+        Learn more <span>→</span>
+      </div>
+    </div>
+  </div>
     </div>
   </section>
 
@@ -364,16 +540,352 @@
       <div class="text-center reveal-up">
         <div class="section-label mb-4">Testimonials</div>
         <h2 class="font-display font-extrabold text-4xl md:text-5xl leading-tight">What Our <span class="accent-text">Clients</span> Say</h2>
-        <p class="body-muted mt-4 max-w-lg mx-auto">Real results, real people &mdash; here's what our clients say about working with Art Developer.</p>
+        <p class="body-muted mt-4 max-w-lg mx-auto">Real results, real people &mdash; here's what our clients say about working with Nexyra Studio.</p>
       </div>
     </div>
     <!-- Row 1: scrolls right → -->
     <div class="marquee-mask mb-5">
-      <div class="marquee-track marquee-right" id="testi-row-1"></div>
+      <div class="marquee-track marquee-right" id="testi-row-1"><!-- pre-rendered by scripts/prerender.mjs -->
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Nexyra Studio transformed our digital presence. Within 6 months, organic traffic grew 280% and leads tripled. Their strategic approach is unlike any agency we've worked with."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=32" alt="Sarah Widyaningrum" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Sarah Widyaningrum</div>
+          <div class="text-xs body-muted">CEO, NovaTech Indonesia</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"The ROI from their PPC campaigns is remarkable — 4x our previous agency. The team is responsive, creative, and genuinely invested in our growth."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=12" alt="Marcus Chen" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Marcus Chen</div>
+          <div class="text-xs body-muted">Marketing Director, Archipelago Retail</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Our brand identity was completely reimagined. The new visual system is stunning and our brand recognition in the market has skyrocketed. Truly exceptional work."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=47" alt="Diva Ramadhani" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Diva Ramadhani</div>
+          <div class="text-xs body-muted">Founder, Glow Skincare Co.</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Professional, creative, data-driven. Their social media strategy grew us from 2K to 85K followers under a year while dramatically improving lead quality."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=5" alt="James Hartono" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">James Hartono</div>
+          <div class="text-xs body-muted">COO, Logistik Nusantara</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Nexyra Studio feels like part of our internal team. Their email automation system alone generates 30% of our monthly revenue. Absolutely outstanding."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=25" alt="Rini Susanti" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Rini Susanti</div>
+          <div class="text-xs body-muted">Head of Digital, Garuda Finance</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Launched our D2C brand from scratch with Nexyra Studio. Within 3 months we hit 1,000 subscribers and the brand looks world-class. Best investment ever."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=15" alt="Kevin Wijaya" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Kevin Wijaya</div>
+          <div class="text-xs body-muted">Founder, Kopi Rimba</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Nexyra Studio transformed our digital presence. Within 6 months, organic traffic grew 280% and leads tripled. Their strategic approach is unlike any agency we've worked with."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=32" alt="Sarah Widyaningrum" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Sarah Widyaningrum</div>
+          <div class="text-xs body-muted">CEO, NovaTech Indonesia</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"The ROI from their PPC campaigns is remarkable — 4x our previous agency. The team is responsive, creative, and genuinely invested in our growth."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=12" alt="Marcus Chen" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Marcus Chen</div>
+          <div class="text-xs body-muted">Marketing Director, Archipelago Retail</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Our brand identity was completely reimagined. The new visual system is stunning and our brand recognition in the market has skyrocketed. Truly exceptional work."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=47" alt="Diva Ramadhani" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Diva Ramadhani</div>
+          <div class="text-xs body-muted">Founder, Glow Skincare Co.</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Professional, creative, data-driven. Their social media strategy grew us from 2K to 85K followers under a year while dramatically improving lead quality."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=5" alt="James Hartono" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">James Hartono</div>
+          <div class="text-xs body-muted">COO, Logistik Nusantara</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Nexyra Studio feels like part of our internal team. Their email automation system alone generates 30% of our monthly revenue. Absolutely outstanding."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=25" alt="Rini Susanti" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Rini Susanti</div>
+          <div class="text-xs body-muted">Head of Digital, Garuda Finance</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Launched our D2C brand from scratch with Nexyra Studio. Within 3 months we hit 1,000 subscribers and the brand looks world-class. Best investment ever."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=15" alt="Kevin Wijaya" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Kevin Wijaya</div>
+          <div class="text-xs body-muted">Founder, Kopi Rimba</div>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
     <!-- Row 2: scrolls left ← -->
     <div class="marquee-mask">
-      <div class="marquee-track marquee-left" id="testi-row-2"></div>
+      <div class="marquee-track marquee-left" id="testi-row-2"><!-- pre-rendered by scripts/prerender.mjs -->
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"We saw a 5x increase in qualified leads within the first quarter. Their SEO and content strategy is meticulous, well-researched, and incredibly effective."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=60" alt="Anastasia Putri" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Anastasia Putri</div>
+          <div class="text-xs body-muted">CMO, Kencana Property Group</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Before Nexyra Studio, our digital presence was basically non-existent. Now we rank on page 1 for our main keywords and get 50+ inbound inquiries monthly."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=8" alt="Budi Santoso" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Budi Santoso</div>
+          <div class="text-xs body-muted">CEO, Maju Bersama UMKM</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"The rebranding project was flawless — delivered on time, on budget, and exceeded every expectation. Our customers literally stopped us to compliment our new look."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=44" alt="Linda Christiani" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Linda Christiani</div>
+          <div class="text-xs body-muted">Brand Manager, Toko Emas Cahaya</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Our enrollment rates increased 67% after Nexyra Studio redesigned our website and launched our Google Ads campaigns. The results speak for themselves."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=20" alt="Rizky Firmansyah" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Rizky Firmansyah</div>
+          <div class="text-xs body-muted">Director, Edu Prima Institute</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"TikTok strategy by Nexyra Studio went viral — one campaign hit 8M views and we sold out our entire stock in 48 hours. Unbelievable team."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=38" alt="Mega Lestari" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Mega Lestari</div>
+          <div class="text-xs body-muted">Co-Founder, Bumbu Nusantara</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Extremely professional and creative. They delivered a complete brand refresh and digital campaign that completely repositioned us in a very competitive market."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=52" alt="Theo Hartawan" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Theo Hartawan</div>
+          <div class="text-xs body-muted">VP Marketing, Indocement Digital</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"We saw a 5x increase in qualified leads within the first quarter. Their SEO and content strategy is meticulous, well-researched, and incredibly effective."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=60" alt="Anastasia Putri" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Anastasia Putri</div>
+          <div class="text-xs body-muted">CMO, Kencana Property Group</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Before Nexyra Studio, our digital presence was basically non-existent. Now we rank on page 1 for our main keywords and get 50+ inbound inquiries monthly."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=8" alt="Budi Santoso" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Budi Santoso</div>
+          <div class="text-xs body-muted">CEO, Maju Bersama UMKM</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"The rebranding project was flawless — delivered on time, on budget, and exceeded every expectation. Our customers literally stopped us to compliment our new look."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=44" alt="Linda Christiani" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Linda Christiani</div>
+          <div class="text-xs body-muted">Brand Manager, Toko Emas Cahaya</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Our enrollment rates increased 67% after Nexyra Studio redesigned our website and launched our Google Ads campaigns. The results speak for themselves."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=20" alt="Rizky Firmansyah" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Rizky Firmansyah</div>
+          <div class="text-xs body-muted">Director, Edu Prima Institute</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"TikTok strategy by Nexyra Studio went viral — one campaign hit 8M views and we sold out our entire stock in 48 hours. Unbelievable team."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=38" alt="Mega Lestari" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Mega Lestari</div>
+          <div class="text-xs body-muted">Co-Founder, Bumbu Nusantara</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="testi-card">
+      <div class="flex gap-1 mb-3">
+        <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+      </div>
+      <p class="text-sm leading-relaxed body-muted mb-5 italic">"Extremely professional and creative. They delivered a complete brand refresh and digital campaign that completely repositioned us in a very competitive market."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://i.pravatar.cc/150?img=52" alt="Theo Hartawan" class="testi-avatar" loading="lazy"/>
+        <div>
+          <div class="font-semibold text-sm">Theo Hartawan</div>
+          <div class="text-xs body-muted">VP Marketing, Indocement Digital</div>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
   </section>
 
@@ -460,7 +972,7 @@
               <select id="book-service" name="service" required class="booking-input rounded-xl px-4 py-3 text-sm">
                 <option value="" disabled selected>Select a service</option>
                 <option value="Brand Identity Design">Brand Identity Design</option>
-                <option value="Social Media Marketing">Social Media Marketing</option>
+                <option value="Digital Marketing">Digital Marketing</option>
                 <option value="SEO & Content Marketing">SEO & Content Marketing</option>
                 <option value="Shopify Store Development">Shopify Store Development</option>
                 <option value="Web Design & Development">Web Design & Development</option>
@@ -494,6 +1006,12 @@
               <label for="book-message" class="text-sm font-semibold">Project Details</label>
               <textarea id="book-message" name="message" rows="4" placeholder="Tell us briefly about your project or goals..." class="booking-input rounded-xl px-4 py-3 text-sm resize-none"></textarea>
             </div>
+            <label class="form-consent">
+              <input type="checkbox" name="consent" required />
+              <span>I agree to the <a href="/privacy-policy" target="_blank">Privacy Policy</a> and consent to Nexyra Studio using these details to reply to me by email or WhatsApp. *</span>
+            </label>
+            <div class="form-turnstile" data-form="booking"></div>
+            <p class="form-error" role="alert" hidden></p>
             <button type="submit" id="booking-submit" class="btn-primary px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl mt-2">
               <i class="bi bi-calendar-check mr-2" aria-hidden="true"></i> Book My Meeting
             </button>
@@ -502,6 +1020,125 @@
 
       </div>
     </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FAQ
+  ════════════════════════════════════════════ -->
+  <section id="faq" class="relative py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12 reveal-up">
+        <div class="section-label mb-4">FAQ</div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl leading-tight">Frequently <span class="accent-text">Asked</span> Questions</h2>
+        <p class="body-muted mt-4 max-w-xl mx-auto">Quick answers about our services, pricing and process. Can't find yours? <a href="#contact" class="footer-link">Ask us directly</a>.</p>
+      </div>
+      <div class="faq-list reveal-up">
+        <details class="faq-item">
+          <summary class="faq-q">What services does Nexyra Studio offer?<i class="bi bi-plus-lg faq-icon" aria-hidden="true"></i></summary>
+          <div class="faq-a body-muted">We offer six services: Brand Identity Design, Digital Marketing, SEO &amp; Content Marketing, Shopify Store Development, Web Design &amp; Development, and Android App Development. Open any card in <a href="#services">Our Services</a> to see what each one includes.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How much does a project cost?<i class="bi bi-plus-lg faq-icon" aria-hidden="true"></i></summary>
+          <div class="faq-a body-muted">Every project is priced on its scope, so there is no fixed price list. <a href="#book-meeting">Book a free call</a> or message us on WhatsApp and we will send you a custom proposal.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Is the first consultation really free?<i class="bi bi-plus-lg faq-icon" aria-hidden="true"></i></summary>
+          <div class="faq-a body-muted">Yes. The discovery call is a free 30-minute video call on Google Meet or Zoom, with no commitment. After the call we share a custom proposal.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How quickly will you reply?<i class="bi bi-plus-lg faq-icon" aria-hidden="true"></i></summary>
+          <div class="faq-a body-muted">We reply to every booking and message within 24 hours, by email or WhatsApp.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Where are you based, and do you work with clients abroad?<i class="bi bi-plus-lg faq-icon" aria-hidden="true"></i></summary>
+          <div class="faq-a body-muted">Our team is based in Pakistan and works remotely with clients around the world; our work has reached more than 30 countries.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Do you build mobile apps?<i class="bi bi-plus-lg faq-icon" aria-hidden="true"></i></summary>
+          <div class="faq-a body-muted">Yes, we build Android applications in Kotlin and Java, from planning and UI/UX design through API integration, testing and optimization.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What does your process look like?<i class="bi bi-plus-lg faq-icon" aria-hidden="true"></i></summary>
+          <div class="faq-a body-muted">Four steps: Discovery &amp; Audit, Strategy Blueprinting, Creative Execution, then Optimize &amp; Scale, with transparent reporting throughout.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Can I verify a Nexyra Studio internship certificate?<i class="bi bi-plus-lg faq-icon" aria-hidden="true"></i></summary>
+          <div class="faq-a body-muted">Yes. Enter the certificate number on our <a href="/verify">certificate verification page</a>.</div>
+        </details>
+      </div>
+    </div>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does Nexyra Studio offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer six services: Brand Identity Design, Digital Marketing, SEO & Content Marketing, Shopify Store Development, Web Design & Development, and Android App Development. Open any card in Our Services to see what each one includes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a project cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every project is priced on its scope, so there is no fixed price list. Book a free call or message us on WhatsApp and we will send you a custom proposal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the first consultation really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The discovery call is a free 30-minute video call on Google Meet or Zoom, with no commitment. After the call we share a custom proposal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly will you reply?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We reply to every booking and message within 24 hours, by email or WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are you based, and do you work with clients abroad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our team is based in Pakistan and works remotely with clients around the world; our work has reached more than 30 countries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you build mobile apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we build Android applications in Kotlin and Java, from planning and UI/UX design through API integration, testing and optimization."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does your process look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Four steps: Discovery & Audit, Strategy Blueprinting, Creative Execution, then Optimize & Scale, with transparent reporting throughout."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I verify a Nexyra Studio internship certificate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Enter the certificate number on our certificate verification page."
+      }
+    }
+  ]
+}
+    </script>
   </section>
 
   <!-- ═══════════════════════════════════════════
@@ -554,6 +1191,12 @@
               <label for="contact-message" class="text-sm font-semibold">Message <span class="accent-text">*</span></label>
               <textarea id="contact-message" name="message" rows="5" required placeholder="Tell us about your project or ask us anything..." class="booking-input rounded-xl px-4 py-3 text-sm resize-none"></textarea>
             </div>
+            <label class="form-consent">
+              <input type="checkbox" name="consent" required />
+              <span>I agree to the <a href="/privacy-policy" target="_blank">Privacy Policy</a> and consent to Nexyra Studio using these details to reply to me by email or WhatsApp. *</span>
+            </label>
+            <div class="form-turnstile" data-form="contact"></div>
+            <p class="form-error" role="alert" hidden></p>
             <button type="submit" id="contact-submit" class="btn-primary px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl mt-2">
               <i class="bi bi-send mr-2" aria-hidden="true"></i> Send Message
             </button>
@@ -566,7 +1209,7 @@
             <div class="card-icon flex-shrink-0"><i class="bi bi-envelope" style="color:var(--accent);font-size:1.3rem"></i></div>
             <div>
               <h3 class="font-display font-bold text-lg mb-1">Email Us</h3>
-              <a href="mailto:info.ahmadinnovate@gmail.com" class="body-muted text-sm hover:underline" style="word-break:break-all">info.ahmadinnovate@gmail.com</a>
+              <a href="mailto:support@nexyrastudio.com" class="body-muted text-sm hover:underline" style="word-break:break-all">support@nexyrastudio.com</a>
             </div>
           </div>
           <div class="feature-card flex items-start gap-4">
@@ -621,17 +1264,12 @@
   ════════════════════════════════════════════ -->
   <footer class="footer-section pt-12 pb-6">
     <div class="max-w-[100rem] mx-auto px-4 sm:px-6">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
 
         <!-- Brand -->
         <div class="lg:col-span-2">
           <a href="#hero" class="flex items-center gap-2 mb-4">
-            <div class="logo-icon w-9 h-9 rounded-xl flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M2 18L10 2L18 18H2Z" class="logo-tri" stroke-width="1.5"/>
-                <circle cx="10" cy="11" r="3" class="logo-circle" stroke-width="1.5"/>
-              </svg>
-            </div>
+            <img src="/public/images/logo-round-128.webp" alt="Nexyra Studio logo" class="w-11 h-11 rounded-full flex-shrink-0" width="44" height="44" />
             <span class="font-display font-extrabold text-xl tracking-tight logo-text">Nexyra<span class="accent-text">Studio</span></span>
           </a>
           <p class="body-muted text-sm leading-relaxed max-w-xs">
@@ -647,8 +1285,19 @@
             <li><a href="#services"  class="footer-link text-sm">Services</a></li>
             <li><a href="#portfolio"     class="footer-link text-sm">Portfolio</a></li>
             <li><a href="#book-meeting" class="footer-link text-sm">Book a Meeting</a></li>
+            <li><a href="#faq"          class="footer-link text-sm">FAQ</a></li>
             <li><a href="#contact"      class="footer-link text-sm">Contact</a></li>
             <li><a href="/verify"   class="footer-link text-sm">Verify Certificate</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <h4 class="font-semibold mb-4">Legal</h4>
+          <ul class="flex flex-col gap-2.5">
+            <li><a href="/privacy-policy" class="footer-link text-sm">Privacy Policy</a></li>
+            <li><a href="/cookie-policy"  class="footer-link text-sm">Cookie Policy</a></li>
+            <li><a href="#" data-cookie-settings class="footer-link text-sm">Cookie Settings</a></li>
           </ul>
         </div>
 
@@ -656,7 +1305,7 @@
         <div>
           <h4 class="font-semibold mb-4">Contact</h4>
           <ul class="flex flex-col gap-2.5 text-sm body-muted">
-            <li>info.ahmadinnovate@gmail.com</li>
+            <li>support@nexyrastudio.com</li>
             <li>+92 315 7558885</li>
             <li>Pakistan</li>
           </ul>
@@ -691,12 +1340,11 @@
       <div id="portfolio-modal-content"></div>
     </div>
   </div>
-  <img src="" alt="">
 
-  <!-- The WhatsApp Button Container -->
-    <div id="whatsapp-button-container"></div>
-    
-  <script src="/assets/js/WhatsAppBtn.js"></script>
+  <script src="/assets/js/site-config.js"></script>
+  <script src="/assets/js/consent.js"></script>
   <script src="/assets/js/script.js"></script>
+  <script src="/assets/js/chatbot.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=nxTurnstileReady" async defer></script>
 </body>
 </html>

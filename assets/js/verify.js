@@ -45,19 +45,24 @@ function initTheme() {
   }
 }
 
-/* ──────────────── URL PREFILL (?cert=NXS-2025-014) ──────────────── */
+/* ──────────────── URL PREFILL (?cert=NXS-2025-014&name=Ali%20Khan) ──────────────── */
+// With both values (e.g. from a QR code) it verifies straight away;
+// with only the number it waits for the name.
 function prefillFromUrl() {
-  const cert = new URLSearchParams(window.location.search).get("cert");
-  if (!cert) return;
-  const input = document.getElementById("cert-input");
-  input.value = cert.trim().toUpperCase();
-  document.getElementById("verify-form").requestSubmit();
+  const params = new URLSearchParams(window.location.search);
+  const cert = params.get("cert");
+  const name = params.get("name");
+  if (cert) document.getElementById("cert-input").value = cert.trim().toUpperCase();
+  if (name) document.getElementById("name-input").value = name.trim();
+  if (cert && name) document.getElementById("verify-form").requestSubmit();
+  else if (cert) document.getElementById("name-input").focus();
 }
 
 /* ──────────────── FORM ──────────────── */
 function initVerifyForm() {
   const form = document.getElementById("verify-form");
   const input = document.getElementById("cert-input");
+  const nameInput = document.getElementById("name-input");
   const btn = document.getElementById("verify-btn");
   const label = document.getElementById("btn-label");
   const spinner = document.getElementById("btn-spinner");
@@ -66,8 +71,9 @@ function initVerifyForm() {
     e.preventDefault();
 
     const certificate = input.value.trim().toUpperCase();
-    if (!certificate) {
-      renderMessage("error", "Enter a certificate number", "Please type the number printed on the certificate.");
+    const name = nameInput.value.trim();
+    if (!certificate || !name) {
+      renderMessage("error", "Enter the name and number", "Please type the intern's full name and the number printed on the certificate.");
       return;
     }
 
@@ -83,7 +89,7 @@ function initVerifyForm() {
       const resp = await fetch(VERIFY_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ certificate }),
+        body: JSON.stringify({ certificate, name }),
       });
 
       const json = await resp.json().catch(() => null);
@@ -276,18 +282,18 @@ function renderNotFound(certificate) {
   card.appendChild(title);
 
   const p = make("p", "body-muted text-sm leading-relaxed max-w-md mx-auto mb-1");
-  p.appendChild(document.createTextNode("We could not find a certificate with the number "));
+  p.appendChild(document.createTextNode("We could not find a certificate matching the number "));
   const strong = make("strong", null, certificate);
   strong.style.color = "var(--text)";
   p.appendChild(strong);
-  p.appendChild(document.createTextNode(" in our records."));
+  p.appendChild(document.createTextNode(" and the name you entered."));
   card.appendChild(p);
 
   card.appendChild(make("p", "body-muted text-sm leading-relaxed max-w-md mx-auto mt-3",
-    "Please check the number for typing mistakes. If it still does not verify, the certificate may not have been issued by Nexyra Studio."));
+    "Please check both for typing mistakes and enter the name exactly as it is printed on the certificate. If it still does not verify, the certificate may not have been issued by Nexyra Studio."));
 
   const mail = document.createElement("a");
-  mail.href = "mailto:info.ahmadinnovate@gmail.com?subject=Certificate%20verification%20query%20-%20" + encodeURIComponent(certificate);
+  mail.href = "mailto:support@nexyrastudio.com?subject=Certificate%20verification%20query%20-%20" + encodeURIComponent(certificate);
   mail.className = "btn-primary inline-block px-7 py-3 rounded-xl text-sm font-semibold mt-6";
   mail.textContent = "Contact us about this certificate";
   card.appendChild(mail);

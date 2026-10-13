@@ -51,7 +51,7 @@ Open `https://your-site.com/verify.html` and enter `NXS-2025-001`
 A direct link also works, which is handy for a QR code on the certificate:
 
 ```
-https://your-site.com/verify.html?cert=NXS-2025-001
+https://your-site.com/verify.html?cert=NXS-2025-001&name=Ali%20Khan
 ```
 
 ---

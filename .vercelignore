@@ -7,3 +7,6 @@ docs
 .env*
 .vscode
 .DS_Store
+scripts
+tailwind.config.cjs
+assets/css/tailwind.src.css
