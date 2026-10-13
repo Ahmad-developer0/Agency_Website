@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Nexyra Studio agency website with serverless email and certificate verification APIs",
   "scripts": {
-    "dev": "node dev-server.mjs",
+    "dev": "node api.js && node dev-server.mjs",
     "build:css": "tailwindcss -c tailwind.config.cjs -i assets/css/tailwind.src.css -o assets/css/tailwind.css --minify",
     "prerender": "node scripts/prerender.mjs",
     "build": "npm run prerender && npm run build:css"
