@@ -1,8 +1,7 @@
 .vercel
-.env
-.env.local
 .env*.local
 node_modules
 .DS_Store
 *.rar
 *.zip
+config.bat
