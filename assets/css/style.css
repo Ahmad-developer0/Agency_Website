@@ -1,5 +1,6 @@
 /* ==================== FONTS ==================== */
-/* Fonts are loaded with <link> tags in each page's <head>; an @import here would delay the first paint. */
+/* Fonts and icons are self-hosted: see fonts.css. Pages load style.min.css, built from
+   style.src.css (fonts.css + this file) by npm run build:css, so rebuild after editing. */
 
 /* ==================== BASE ==================== */
 *, *::before, *::after {
@@ -1790,4 +1791,99 @@ body.menu-open {
 
 .author-link:hover {
     text-decoration: underline;
+}
+
+/* ==================== SVG ICONS ==================== */
+.svg-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.portfolio-img-placeholder .svg-icon,
+.case-hero-placeholder .svg-icon {
+    width: 3rem;
+    height: 3rem;
+    opacity: 0.6;
+}
+
+/* ==================== HERO CHECKLIST ==================== */
+.hero-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.hero-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.8rem 1rem;
+    border-radius: 0.9rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.hero-checklist i {
+    color: var(--accent);
+}
+
+/* CEO photo sits over the initials once public/images/ceo.webp exists */
+.author-avatar {
+    position: relative;
+    overflow: hidden;
+}
+
+.author-avatar img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.concept-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(15, 15, 20, 0.75);
+    color: #fff;
+}
+
+/* ==================== SERVICE GROUPS ==================== */
+.service-group-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.25rem;
+    padding-left: 0.85rem;
+    border-left: 3px solid var(--accent);
+}
+
+/* ==================== HERO TRUST LINE ==================== */
+.hero-trust {
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+    margin-top: 1.25rem;
+    max-width: 28rem;
+    font-size: .875rem;
+    line-height: 1.5;
+}
+.hero-trust .svg-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+    margin-top: .1rem;
+    color: var(--accent);
 }

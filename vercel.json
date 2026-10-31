@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "echo 'Static site: run npm run build locally before deploying'",
+  "buildCommand": null,
   "outputDirectory": ".",
   "framework": null,
   "cleanUrls": true,
@@ -9,6 +9,16 @@
       "source": "/admin",
       "destination": "/",
       "permanent": false
+    },
+    {
+      "source": "/dental-clinics",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/dental-clinics.html",
+      "destination": "/",
+      "permanent": true
     },
     {
       "source": "/lib/:path*",
@@ -35,6 +45,18 @@
         {
           "key": "Strict-Transport-Security",
           "value": "max-age=31536000; includeSubDomains"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; connect-src 'self' https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
         }
       ]
     },

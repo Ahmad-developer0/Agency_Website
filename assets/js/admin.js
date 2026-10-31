@@ -352,3 +352,11 @@ function toast(message, kind) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove("show"), 3200);
 }
+
+/* ──────────────── FOOTER YEAR ────────────────
+   The admin page does not load site-config.js, so the
+   same one-liner lives here. The HTML holds the year too.
+───────────────────────────────────────────── */
+document.querySelectorAll("[data-current-year]").forEach((el) => {
+  el.textContent = new Date().getFullYear();
+});

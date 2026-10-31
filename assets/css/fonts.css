@@ -1,0 +1,63 @@
+/* ============================================
+   Self-hosted fonts (latin subset, from Google Fonts) and
+   the Bootstrap Icons the site actually uses.
+
+   Serving them from our own domain removes the render-blocking
+   trip to fonts.googleapis.com / cdn.jsdelivr.net.
+
+   bootstrap-icons-subset.woff2 holds ONLY the icons listed below
+   (Bootstrap Icons 1.11.3, MIT). A new bi-* icon needs adding here
+   and to that file, or it shows as an empty box.
+   ============================================ */
+
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/lato-400.woff2") format("woff2"); }
+@font-face { font-family: 'Lato'; font-style: italic; font-weight: 400; font-display: swap; src: url("../fonts/lato-400-italic.woff2") format("woff2"); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/lato-700.woff2") format("woff2"); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 900; font-display: swap; src: url("../fonts/lato-900.woff2") format("woff2"); }
+@font-face { font-family: 'Orbitron'; font-style: normal; font-weight: 400 900; font-display: swap; src: url("../fonts/orbitron.woff2") format("woff2"); }
+@font-face { font-family: 'Syne'; font-style: normal; font-weight: 400 800; font-display: swap; src: url("../fonts/syne.woff2") format("woff2"); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 100 1000; font-display: swap; src: url("../fonts/dm-sans.woff2") format("woff2"); }
+
+@font-face { font-family: 'bootstrap-icons'; font-display: swap; src: url("../fonts/bootstrap-icons-subset.woff2") format("woff2"); }
+.bi::before, [class^="bi-"]::before, [class*=" bi-"]::before {
+  display: inline-block;
+  font-family: bootstrap-icons !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: -.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.bi-calendar-check::before{content:"\f1e2"}
+.bi-camera-video::before{content:"\f21f"}
+.bi-check-circle-fill::before{content:"\f26a"}
+.bi-check-lg::before{content:"\f633"}
+.bi-cloud-arrow-up::before{content:"\f297"}
+.bi-collection::before{content:"\f2cc"}
+.bi-collection-fill::before{content:"\f2c9"}
+.bi-envelope::before{content:"\f32f"}
+.bi-envelope-fill::before{content:"\f32c"}
+.bi-exclamation-triangle-fill::before{content:"\f33a"}
+.bi-eye::before{content:"\f341"}
+.bi-eye-slash::before{content:"\f340"}
+.bi-geo-alt::before{content:"\f3e8"}
+.bi-hourglass-split::before{content:"\f41f"}
+.bi-house-door-fill::before{content:"\f422"}
+.bi-images::before{content:"\f42b"}
+.bi-inbox::before{content:"\f42d"}
+.bi-info-circle-fill::before{content:"\f430"}
+.bi-lightning-charge::before{content:"\f46d"}
+.bi-linkedin::before{content:"\f472"}
+.bi-patch-check::before{content:"\f4b6"}
+.bi-patch-check-fill::before{content:"\f4b5"}
+.bi-plus-lg::before{content:"\f64d"}
+.bi-send::before{content:"\f6c0"}
+.bi-send-fill::before{content:"\f6b9"}
+.bi-shield-check::before{content:"\f52f"}
+.bi-shield-lock-fill::before{content:"\f537"}
+.bi-trash::before{content:"\f5de"}
+.bi-whatsapp::before{content:"\f618"}
+.bi-x-circle-fill::before{content:"\f622"}

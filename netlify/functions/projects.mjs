@@ -2,17 +2,17 @@
  * Netlify function — public project list.
  */
 import { listPublicProjects } from "../../lib/projects-core.js";
-
-const CORS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-  "Content-Type": "application/json",
-};
+import { originAllowed, corsHeaders, ORIGIN_REFUSED } from "../../lib/http.js";
 
 export default async (request) => {
-  if (request.method === "OPTIONS") return new Response("", { status: 200, headers: CORS });
+  const origin = request.headers.get("origin");
+  if (!originAllowed(origin, request.headers.get("host"))) {
+    return Response.json(ORIGIN_REFUSED, { status: 403 });
+  }
+  const headers = { ...corsHeaders(origin, "GET, POST, OPTIONS"), "Content-Type": "application/json" };
+
+  if (request.method === "OPTIONS") return new Response(null, { status: 204, headers });
 
   const { status, body } = await listPublicProjects();
-  return new Response(JSON.stringify(body), { status, headers: CORS });
+  return new Response(JSON.stringify(body), { status, headers });
 };

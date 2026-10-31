@@ -1,292 +1,289 @@
+/* =================== ICONS =================== */
+// Inline SVG line icons (24px grid), coloured by the card's accent via currentColor
+const ICON_PATHS = {
+  target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  zap: '<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>',
+  chart: '<path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
+  mapPin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+  calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/>',
+  smartphone: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>',
+  users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  monitor: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>',
+  search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  megaphone: '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+  pen: '<path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/>',
+  bag: '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+  bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+  phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  code: '<path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/>',
+  link: '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/>',
+};
+
+function icon(name) {
+  return `<svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON_PATHS[name] || ""}</svg>`;
+}
+
 /* =================== DATA =================== */
 const whyData = [
   {
-    icon: "🎯",
-    title: "Strategy-First Approach",
+    icon: "target",
+    title: "Built Around Bookings",
     description:
-      "Every campaign begins with rigorous market research and audience analysis. We don't guess — we build on data, insights, and proven frameworks tailored to your unique business context.",
+      "Every page we build has one job: turn a visitor into a call, a WhatsApp message or a booked appointment. Clear offers, clear buttons, nothing in the way.",
   },
   {
-    icon: "⚡",
-    title: "Agile & Fast Execution",
+    icon: "zap",
+    title: "Fast & Mobile-First",
     description:
-      "We move at the speed of digital. Our agile team ships campaigns, tests rapidly, and iterates based on real-time performance data — so you never miss a market opportunity.",
+      "Most customers search on their phone. We build sites that load quickly and work properly on small screens, because a slow site loses the sale.",
   },
   {
-    icon: "📊",
-    title: "Transparent Reporting",
+    icon: "chart",
+    title: "Honest Reporting",
     description:
-      "No vanity metrics. You get clear, honest dashboards showing exactly what's working, what's not, and how we're evolving strategy to maximize your return on investment.",
+      "A short monthly report in plain English: calls, form enquiries, bookings and Google rankings. If something isn't working, we tell you and change it.",
+  },
+  {
+    icon: "globe",
+    title: "Local & International",
+    description:
+      "Clients across Pakistan and abroad. We work remotely in clear English and keep hours that overlap the US, UK, Europe and the Gulf.",
   },
 ];
 
 const benefitsData = [
   {
-    icon: "🚀",
-    title: "Accelerated Growth",
+    icon: "mapPin",
+    title: "Found on Google Maps",
     description:
-      "Our proven frameworks scale brands from zero to market leaders, compressing years of organic growth into targeted, accelerated campaigns.",
+      "We set up and optimise your Google Business Profile and local SEO so nearby customers see you when they search.",
   },
   {
-    icon: "🔒",
-    title: "Brand Safety",
+    icon: "calendar",
+    title: "Online Booking",
     description:
-      "Your reputation is sacred. Every piece of content, every placement, every campaign protects and elevates your brand identity.",
+      "Let customers book or request a call any time, from any device, without waiting on the phone.",
   },
   {
-    icon: "💡",
-    title: "Creative Excellence",
+    icon: "smartphone",
+    title: "Works on Every Phone",
     description:
-      "Award-winning creative team producing content that stops the scroll, sparks emotion, and drives meaningful action from your audience.",
+      "Responsive pages, readable text and tap-friendly buttons, tested on the phones your customers actually use.",
   },
   {
-    icon: "🤝",
-    title: "Dedicated Partnership",
+    icon: "users",
+    title: "Direct Contact",
     description:
-      "We work as an extension of your team — not just a vendor. Your goals are our goals, and we're committed to your long-term success.",
+      "You talk to the people building your site and running your campaigns, by WhatsApp, email or a call.",
   },
+];
+
+// Homepage service groups, in display order
+const serviceGroups = [
+  "Booking, CRM & Calling",
+  "Automation & Custom Software",
+  "Web, Apps & Marketing",
 ];
 
 const servicesData = [
   {
-    icon: "🎨",
-    title: "Brand Identity Design",
+    icon: "calendar",
+    title: "Online Appointment Systems",
+    group: "Booking, CRM & Calling",
     description:
-      "We craft comprehensive visual identities that communicate your brand's essence, values, and personality across every touchpoint.",
+      "Let customers book 24/7 from your website, Google or WhatsApp, with live availability and no double bookings.",
     keypoints: [
-      "Logo & visual identity system",
-      "Branding Video Ads",
-      "Frontend Development",
-      "Brand voice & messaging framework",
-      "Stationery & collateral design",
-      "Brand audit & refresh consulting",
+      "Online booking on your website & Google profile",
+      "Live availability across staff, rooms & locations",
+      "Booking confirmations by email, SMS or WhatsApp",
+      "Rescheduling & cancellation links",
+      "Deposits or prepayment (optional)",
+      "Calendar sync with Google & Outlook",
     ],
   },
   {
-    icon: "📈",
-    title: "Digital Marketing",
+    icon: "users",
+    title: "Customer CRM",
+    group: "Booking, CRM & Calling",
     description:
-      "Full-funnel digital marketing that reaches the right audience on every channel — social media, search ads and email — and turns clicks into leads and sales.",
+      "One place for every customer's details, deals, messages and follow-ups, so nobody falls through the cracks.",
     keypoints: [
-      "Digital marketing strategy & campaign planning",
-      "Social media marketing & content creation",
-      "Paid ads (Google, Meta, TikTok, LinkedIn)",
-      "Email marketing & automation",
-      "Influencer partnership coordination",
-      "Analytics, conversion tracking & monthly reporting",
+      "Customer profiles & history",
+      "Lead tracking from enquiry to sale",
+      "Follow-up tasks & recalls",
+      "Notes, tags & segments",
+      "Messaging history in one place",
+      "Reports on new customers & bookings",
     ],
   },
   {
-    icon: "🔍",
-    title: "SEO & Content Marketing",
+    icon: "bell",
+    title: "Automated Reminders",
+    group: "Booking, CRM & Calling",
     description:
-      "Dominate search results with technical SEO excellence and compelling content that attracts, educates, and converts your target audience.",
+      "Automatic SMS, WhatsApp and email reminders that cut no-shows and bring customers back again.",
     keypoints: [
-      "Technical SEO audit & optimization",
-      "Keyword research & competitor analysis",
-      "Content strategy & editorial planning",
-      "Long-form blog & article writing",
-      "Link building & authority campaigns",
-      "Local SEO for multi-location brands",
+      "Appointment reminders before each visit",
+      "SMS, WhatsApp & email channels",
+      "Repeat-visit & renewal reminders",
+      "Review requests after the visit",
+      "Custom timing & message templates",
+      "Two-way confirm / reschedule replies",
     ],
   },
   {
-    icon: "🛍️",
-    title: "Shopify Store Development",
+    icon: "phone",
+    title: "Calling Systems",
+    group: "Booking, CRM & Calling",
     description:
-      "Conversion-focused Shopify stores built to sell — custom themes, seamless checkout, and the integrations your business runs on.",
+      "Business phone and call-handling setup so every call is answered, routed or followed up, even after hours.",
     keypoints: [
-      "Custom Shopify theme design & development",
-      "Store setup, migration & product catalog",
-      "Payment gateway & shipping configuration",
-      "Shopify app integration & customization",
-      "Speed optimization & mobile experience",
-      "Conversion rate optimization (CRO)",
+      "Cloud phone numbers & call routing",
+      "IVR menus & after-hours handling",
+      "Missed-call text-back",
+      "Call recording & call logs",
+      "Call tracking for marketing campaigns",
+      "CRM integration for every call",
     ],
   },
   {
-    icon: "🌐",
-    title: "Web Design & Development",
+    icon: "zap",
+    title: "Business Automation",
+    group: "Automation & Custom Software",
     description:
-      "High-performance, conversion-optimized websites and landing pages built with cutting-edge technology and stunning design.",
+      "Automate the repetitive work — forms, follow-ups, data entry and reports — so your team can focus on customers.",
+    keypoints: [
+      "Workflow mapping & process audit",
+      "Form-to-CRM & lead routing automation",
+      "Automatic follow-up sequences",
+      "Invoices, documents & data entry automation",
+      "Scheduled reports & alerts",
+      "Tools like Zapier, Make & n8n, or custom code",
+    ],
+  },
+  {
+    icon: "code",
+    title: "Custom Software",
+    group: "Automation & Custom Software",
+    description:
+      "Web-based software built around how your business works, when off-the-shelf tools don't fit.",
+    keypoints: [
+      "Requirement analysis & planning",
+      "Custom dashboards & admin panels",
+      "Internal tools & portals",
+      "Secure user accounts & roles",
+      "Cloud hosting & backups",
+      "Ongoing support & improvements",
+    ],
+  },
+  {
+    icon: "link",
+    title: "Integrations",
+    group: "Automation & Custom Software",
+    description:
+      "Connect the tools you already use — booking, CRM, payments, WhatsApp, email and accounting — so data flows automatically.",
+    keypoints: [
+      "API integrations between your systems",
+      "WhatsApp Business & SMS integration",
+      "Payment gateway integration",
+      "Google, Meta & calendar integrations",
+      "Data sync & migration",
+      "Webhooks & custom connectors",
+    ],
+  },
+  {
+    icon: "monitor",
+    title: "Web Development",
+    group: "Web, Apps & Marketing",
+    description:
+      "Fast, mobile-friendly websites and landing pages with online booking, built to turn visitors into enquiries.",
     keypoints: [
       "UX/UI design & prototyping",
       "Responsive web development",
-      "E-commerce development (Shopify, WooCommerce)",
+      "Online booking & contact forms",
       "Landing page & funnel building",
       "Website speed & core web vitals",
       "CMS setup & team training",
     ],
   },
   {
-    icon: "📧",
+    icon: "smartphone",
     title: "App Development",
+    group: "Web, Apps & Marketing",
     description:
-      "High-performance Android applications designed to deliver exceptional user experiences and scalable business solutions.",
+      "Android apps for bookings, customer portals and internal teams, designed to be simple to use and easy to scale.",
     keypoints: [
       "Requirement analysis & project planning",
       "UI/UX design & prototyping",
       "Kotlin & Java development",
       "API integration & backend setup",
       "Testing & performance optimization",
-      "Bug fixing & app optimization",
+      "Publishing & ongoing updates",
     ],
   },
-];
-
-const testimonialsData = [
   {
-    image: "https://i.pravatar.cc/150?img=32",
-    name: "Sarah Widyaningrum",
-    title: "CEO, NovaTech Indonesia",
+    icon: "search",
+    title: "Digital Marketing & SEO",
+    group: "Web, Apps & Marketing",
     description:
-      "Nexyra Studio transformed our digital presence. Within 6 months, organic traffic grew 280% and leads tripled. Their strategic approach is unlike any agency we've worked with.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=12",
-    name: "Marcus Chen",
-    title: "Marketing Director, Archipelago Retail",
-    description:
-      "The ROI from their PPC campaigns is remarkable — 4x our previous agency. The team is responsive, creative, and genuinely invested in our growth.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=47",
-    name: "Diva Ramadhani",
-    title: "Founder, Glow Skincare Co.",
-    description:
-      "Our brand identity was completely reimagined. The new visual system is stunning and our brand recognition in the market has skyrocketed. Truly exceptional work.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=5",
-    name: "James Hartono",
-    title: "COO, Logistik Nusantara",
-    description:
-      "Professional, creative, data-driven. Their social media strategy grew us from 2K to 85K followers under a year while dramatically improving lead quality.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=25",
-    name: "Rini Susanti",
-    title: "Head of Digital, Garuda Finance",
-    description:
-      "Nexyra Studio feels like part of our internal team. Their email automation system alone generates 30% of our monthly revenue. Absolutely outstanding.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=15",
-    name: "Kevin Wijaya",
-    title: "Founder, Kopi Rimba",
-    description:
-      "Launched our D2C brand from scratch with Nexyra Studio. Within 3 months we hit 1,000 subscribers and the brand looks world-class. Best investment ever.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=60",
-    name: "Anastasia Putri",
-    title: "CMO, Kencana Property Group",
-    description:
-      "We saw a 5x increase in qualified leads within the first quarter. Their SEO and content strategy is meticulous, well-researched, and incredibly effective.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=8",
-    name: "Budi Santoso",
-    title: "CEO, Maju Bersama UMKM",
-    description:
-      "Before Nexyra Studio, our digital presence was basically non-existent. Now we rank on page 1 for our main keywords and get 50+ inbound inquiries monthly.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=44",
-    name: "Linda Christiani",
-    title: "Brand Manager, Toko Emas Cahaya",
-    description:
-      "The rebranding project was flawless — delivered on time, on budget, and exceeded every expectation. Our customers literally stopped us to compliment our new look.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=20",
-    name: "Rizky Firmansyah",
-    title: "Director, Edu Prima Institute",
-    description:
-      "Our enrollment rates increased 67% after Nexyra Studio redesigned our website and launched our Google Ads campaigns. The results speak for themselves.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=38",
-    name: "Mega Lestari",
-    title: "Co-Founder, Bumbu Nusantara",
-    description:
-      "TikTok strategy by Nexyra Studio went viral — one campaign hit 8M views and we sold out our entire stock in 48 hours. Unbelievable team.",
-    stars: 5,
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=52",
-    name: "Theo Hartawan",
-    title: "VP Marketing, Indocement Digital",
-    description:
-      "Extremely professional and creative. They delivered a complete brand refresh and digital campaign that completely repositioned us in a very competitive market.",
-    stars: 5,
+      "Rank on Google Search and Google Maps, and run Google and Meta ads that turn clicks into bookings.",
+    keypoints: [
+      "Google Business Profile & local SEO",
+      "Technical SEO & keyword research",
+      "Paid ads (Google, Meta, TikTok)",
+      "Social media marketing & content",
+      "Conversion tracking (calls, forms, bookings)",
+      "Monthly reporting",
+    ],
   },
 ];
 
 /* ===================================================
    PORTFOLIO
-   Loaded from the database (/api/projects). The array
-   below is only what shows if that request fails.
+   Loaded from the database (/api/projects). The section
+   and its nav links stay hidden until there is at least
+   one real project to show.
+   Tag a project "Sample" or "Concept" in the admin panel
+   to label it as a sample / concept project.
 =================================================== */
 
 let portfolioData = [];
-
-const PORTFOLIO_FALLBACK = [
-  {
-    emoji: "\ud83c\udf10",
-    title: "Archipelago Retail E-commerce",
-    category: "Web Dev",
-    tags: ["Shopify", "UI/UX Design", "CRO", "Performance"],
-    summary: "Shopify rebuild focused on speed and conversions.",
-    description:
-      "Complete e-commerce redesign and rebuild for Archipelago Retail on Shopify. Focused on conversion rate optimization, mobile-first design, and lightning-fast performance.",
-    cover: "",
-    gallery: [],
-    client: "",
-    date: "",
-    results: [],
-    liveUrl: "",
-    featured: false,
-  },
-];
 
 async function loadPortfolio() {
   try {
     const resp = await fetch("/api/projects");
     const json = await resp.json();
-    if (json && json.success && Array.isArray(json.projects) && json.projects.length) {
+    if (json && json.success && Array.isArray(json.projects)) {
       portfolioData = json.projects;
-    } else {
-      portfolioData = PORTFOLIO_FALLBACK;
     }
   } catch (err) {
-    console.warn("Could not load projects, showing fallback:", err);
-    portfolioData = PORTFOLIO_FALLBACK;
+    console.warn("Could not load projects:", err);
   }
 
+  if (!portfolioData.length) return;
+
+  document.getElementById("portfolio").hidden = false;
+  document.querySelectorAll("[data-portfolio-link]").forEach((el) => (el.hidden = false));
   renderPortfolioFilters();
   renderPortfolio();
+}
+
+function isConceptProject(item) {
+  return (item.tags || []).some((t) => /^(sample|concept)$/i.test(String(t).trim()));
 }
 
 /* =================== RENDER FUNCTIONS =================== */
 
 function renderWhy() {
   const grid = document.getElementById("why-grid");
+  if (grid.childElementCount) return; // already pre-rendered into the HTML
   grid.innerHTML = whyData
     .map(
       (item, i) => `
     <div class="feature-card reveal-up" style="transition-delay: ${i * 0.1}s">
-      <div class="card-icon">${item.icon}</div>
+      <div class="card-icon">${icon(item.icon)}</div>
       <h3 class="font-display font-bold text-xl mb-3">${item.title}</h3>
       <p class="body-muted text-sm leading-relaxed">${item.description}</p>
     </div>
@@ -297,11 +294,12 @@ function renderWhy() {
 
 function renderBenefits() {
   const grid = document.getElementById("benefits-grid");
+  if (grid.childElementCount) return; // already pre-rendered into the HTML
   grid.innerHTML = benefitsData
     .map(
       (item, i) => `
     <div class="feature-card reveal-up" style="transition-delay: ${i * 0.1}s">
-      <div class="card-icon">${item.icon}</div>
+      <div class="card-icon">${icon(item.icon)}</div>
       <h3 class="font-display font-bold text-lg mb-2">${item.title}</h3>
       <p class="body-muted text-sm leading-relaxed">${item.description}</p>
     </div>
@@ -312,52 +310,34 @@ function renderBenefits() {
 
 function renderServices() {
   const grid = document.getElementById("services-grid");
-  grid.innerHTML = servicesData
-    .map(
-      (item, i) => `
-    <div class="feature-card reveal-up" style="transition-delay: ${i * 0.08}s; cursor: pointer;" onclick="openServiceModal(${i})">
-      <div class="card-icon">${item.icon}</div>
-      <h3 class="font-display font-bold text-xl mb-3">${item.title}</h3>
-      <p class="body-muted text-sm leading-relaxed mb-4">${item.description.substring(0, 100)}...</p>
-      <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
-        Learn more <span>→</span>
+  if (grid.childElementCount) return; // already pre-rendered into the HTML
+  grid.innerHTML = serviceGroups
+    .map((group) => {
+      const items = servicesData
+        .map((item, i) => ({ item, i }))
+        .filter(({ item }) => item.group === group);
+      const cards = items
+        .map(
+          ({ item, i }, n) => `
+        <div class="feature-card reveal-up" style="transition-delay: ${n * 0.08}s; cursor: pointer;" onclick="openServiceModal(${i})">
+          <div class="card-icon">${icon(item.icon)}</div>
+          <h4 class="font-display font-bold text-lg mb-3">${item.title}</h4>
+          <p class="body-muted text-sm leading-relaxed mb-4">${item.description}</p>
+          <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
+            Learn more <span>→</span>
+          </div>
+        </div>`,
+        )
+        .join("");
+      const cols = items.length > 3 ? "lg:grid-cols-4" : "lg:grid-cols-3";
+      return `
+    <div class="service-group">
+      <h3 class="service-group-title reveal-up">${group}</h3>
+      <div class="grid sm:grid-cols-2 ${cols} gap-6">${cards}
       </div>
-    </div>
-  `,
-    )
+    </div>`;
+    })
     .join("");
-}
-
-function buildTestiCard(item) {
-  return `
-    <div class="testi-card">
-      <div class="flex gap-1 mb-3">
-        ${'<span class="star" aria-hidden="true">★</span>'.repeat(item.stars)}
-      </div>
-      <p class="text-sm leading-relaxed body-muted mb-5 italic">"${item.description}"</p>
-      <div class="flex items-center gap-3">
-        <img src="${item.image}" alt="${item.name}" class="testi-avatar" loading="lazy"/>
-        <div>
-          <div class="font-semibold text-sm">${item.name}</div>
-          <div class="text-xs body-muted">${item.title}</div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function renderTestimonials() {
-  // Split into two halves
-  const half = Math.ceil(testimonialsData.length / 2);
-  const row1Data = testimonialsData.slice(0, half);
-  const row2Data = testimonialsData.slice(half);
-
-  // Duplicate each row (seamless loop needs 2 copies)
-  const row1HTML = [...row1Data, ...row1Data].map(buildTestiCard).join("");
-  const row2HTML = [...row2Data, ...row2Data].map(buildTestiCard).join("");
-
-  document.getElementById("testi-row-1").innerHTML = row1HTML;
-  document.getElementById("testi-row-2").innerHTML = row2HTML;
 }
 
 function renderPortfolio(filter = "all") {
@@ -374,12 +354,10 @@ function renderPortfolio(filter = "all") {
   grid.innerHTML = portfolioData
     .map((item, i) => {
       const hidden = filter !== "all" && item.category !== filter ? "hidden" : "";
-      const emoji = item.emoji || "\ud83d\uddbc\ufe0f";
-
       const media = item.cover
         ? `<img src="${esc(item.cover)}" alt="${esc(item.title)}" class="portfolio-img"
-                loading="lazy" data-emoji="${esc(emoji)}" onerror="portfolioImgFallback(this)">`
-        : `<div class="portfolio-img-placeholder overflow-hidden"><span>${esc(emoji)}</span></div>`;
+                loading="lazy" onerror="portfolioImgFallback(this)">`
+        : `<div class="portfolio-img-placeholder overflow-hidden"><span>${icon("image")}</span></div>`;
 
       const tagList = item.tags || [];
       const tags = tagList.slice(0, 3).map((t) => `<span class="chip">${esc(t)}</span>`).join("");
@@ -393,6 +371,7 @@ function renderPortfolio(filter = "all") {
       <div class="portfolio-media">
         ${media}
         ${item.featured ? '<span class="featured-badge">Featured</span>' : ""}
+        ${isConceptProject(item) ? '<span class="concept-badge">Sample / concept project</span>' : ""}
       </div>
       <div class="p-5">
         <div class="flex items-center justify-between mb-2">
@@ -408,13 +387,11 @@ function renderPortfolio(filter = "all") {
   observeReveal();
 }
 
-/* A cover image that fails to load falls back to the emoji tile */
+/* A cover image that fails to load falls back to the placeholder tile */
 function portfolioImgFallback(img) {
   const box = document.createElement("div");
   box.className = "portfolio-img-placeholder overflow-hidden";
-  const span = document.createElement("span");
-  span.textContent = img.dataset.emoji || "\ud83d\uddbc\ufe0f";
-  box.appendChild(span);
+  box.innerHTML = `<span>${icon("image")}</span>`;
   img.replaceWith(box);
 }
 
@@ -434,8 +411,8 @@ function renderPortfolioFilters() {
   filterContainer.innerHTML = categories
     .map(
       (cat) => `
-    <button class="filter-btn ${cat === "all" ? "active" : ""} px-5 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="${cat}">
-      ${cat.charAt(0).toUpperCase() + cat.slice(1)}
+    <button class="filter-btn ${cat === "all" ? "active" : ""} px-5 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="${esc(cat)}">
+      ${esc(cat.charAt(0).toUpperCase() + cat.slice(1))}
     </button>
   `,
     )
@@ -458,7 +435,7 @@ function renderPortfolioFilters() {
 function openServiceModal(index) {
   const item = servicesData[index];
   document.getElementById("service-modal-content").innerHTML = `
-    <div class="text-4xl mb-5">${item.icon}</div>
+    <div class="card-icon">${icon(item.icon)}</div>
     <h2 class="font-display font-extrabold text-2xl mb-4">${item.title}</h2>
     <p class="body-muted leading-relaxed mb-6">${item.description}</p>
     <h4 class="font-semibold text-sm mb-3" style="color:var(--accent)">WHAT'S INCLUDED</h4>
@@ -474,7 +451,7 @@ function openServiceModal(index) {
         )
         .join("")}
     </div>
-    <a href="#contact" class="btn-primary mt-8 px-6 py-3 rounded-xl font-semibold text-sm inline-block transition-all duration-300 hover:scale-105" onclick="closeModal('service-modal')">Get This Service →</a>
+    <a href="#book-meeting" class="btn-primary mt-8 px-6 py-3 rounded-xl font-semibold text-sm inline-block transition-all duration-300 hover:scale-105" onclick="closeModal('service-modal'); preselectService(servicesData[${index}].title)">Book a Free Call →</a>
   `;
   openModal("service-modal");
 }
@@ -483,13 +460,11 @@ function openPortfolioModal(index) {
   const item = portfolioData[index];
   if (!item) return;
 
-  const emoji = item.emoji || "\ud83d\uddbc\ufe0f";
-
   // ── Hero ──
   const hero = item.cover
     ? `<img src="${esc(item.cover)}" alt="${esc(item.title)}" class="case-hero-img"
-            data-emoji="${esc(emoji)}" onerror="caseHeroFallback(this)">`
-    : `<div class="case-hero-placeholder"><span>${esc(emoji)}</span></div>`;
+            onerror="caseHeroFallback(this)">`
+    : `<div class="case-hero-placeholder"><span>${icon("image")}</span></div>`;
 
   // ── Meta strip: client and date ──
   const metaBits = [];
@@ -546,7 +521,7 @@ function openPortfolioModal(index) {
     : "";
 
   // ── Actions: live link (if any) + book a meeting ──
-  const liveBtn = item.liveUrl
+  const liveBtn = /^https?:\/\//i.test(item.liveUrl || "")
     ? `<a href="${esc(item.liveUrl)}" target="_blank" rel="noopener noreferrer"
           class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm inline-flex items-center gap-2 transition-all duration-300 hover:scale-105">
          View Live Project <span aria-hidden="true">&#8599;</span>
@@ -565,6 +540,7 @@ function openPortfolioModal(index) {
     <div class="flex flex-wrap items-center gap-2 mb-3">
       <span class="chip">${esc(item.category)}</span>
       ${item.featured ? '<span class="chip chip-featured">Featured</span>' : ""}
+      ${isConceptProject(item) ? '<span class="chip">Sample / concept project</span>' : ""}
     </div>
 
     <h2 class="font-display font-extrabold text-2xl mb-3">${esc(item.title)}</h2>
@@ -601,9 +577,7 @@ function openPortfolioModal(index) {
 function caseHeroFallback(img) {
   const box = document.createElement("div");
   box.className = "case-hero-placeholder";
-  const span = document.createElement("span");
-  span.textContent = img.dataset.emoji || "\ud83d\uddbc\ufe0f";
-  box.appendChild(span);
+  box.innerHTML = `<span>${icon("image")}</span>`;
   img.replaceWith(box);
 }
 
@@ -721,11 +695,21 @@ function initNavbar() {
   const mobileLinks = mobileMenu.querySelectorAll("a");
   let isMenuOpen = false;
 
-  // Scroll shadow
+  // Scroll shadow + active link, at most once per frame. Layout is read
+  // first and classes written after, so the browser never has to redo
+  // layout in the middle of the handler (a "forced reflow").
+  let scrollQueued = false;
   window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 20);
-    updateActiveNav();
-  });
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(() => {
+      scrollQueued = false;
+      const scrolled = window.scrollY > 20;
+      const current = activeSection();
+      navbar.classList.toggle("scrolled", scrolled);
+      setActiveNav(current);
+    });
+  }, { passive: true });
 
   // Hamburger toggle
   menuToggle.addEventListener("click", (e) => {
@@ -779,22 +763,22 @@ function initNavbar() {
 }
 
 /* =================== ACTIVE NAV =================== */
-function updateActiveNav() {
+// Reads layout only: the last section whose top has passed the navbar
+function activeSection() {
   const sections = ["hero", "about", "services", "portfolio", "faq", "contact"];
-  const navLinks = document.querySelectorAll(".nav-link");
   let current = "";
-
   sections.forEach((id) => {
     const section = document.getElementById(id);
-    if (section) {
-      const top = section.getBoundingClientRect().top;
-      if (top <= 100) current = id;
-    }
+    // A hidden section (portfolio with no projects) reports top 0, so skip it
+    if (section && !section.hidden && section.getBoundingClientRect().top <= 100) current = id;
   });
+  return current;
+}
 
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-    if (link.dataset.section === current) link.classList.add("active");
+// Writes only
+function setActiveNav(current) {
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.classList.toggle("active", link.dataset.section === current);
   });
 }
 
@@ -824,8 +808,35 @@ const ADMIN_WHATSAPP = "923157558885";
 const MAIL_API = "/api/send";
 
 /* =================== SPAM PROTECTION (Cloudflare Turnstile) =================== */
-// The Turnstile script calls this once it has loaded (see index.html)
+// Turnstile is heavy (most of the page's JavaScript time on a phone), so it
+// is only loaded when a form is about to be used, not with the page.
 const turnstileWidgets = {};
+let turnstileRequested = false;
+
+function loadTurnstile() {
+  if (turnstileRequested || !(window.NEXYRA_CONFIG || {}).TURNSTILE_SITE_KEY) return;
+  turnstileRequested = true;
+  const s = document.createElement("script");
+  s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=nxTurnstileReady";
+  s.async = true;
+  document.head.appendChild(s);
+}
+
+function initTurnstileLoader() {
+  const forms = document.querySelectorAll("#book-meeting, #contact");
+  // Someone typing in a form needs it right away
+  forms.forEach((f) => f.addEventListener("focusin", loadTurnstile, { once: true }));
+  if (!("IntersectionObserver" in window)) return loadTurnstile();
+  const io = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) {
+      io.disconnect();
+      loadTurnstile();
+    }
+  }, { rootMargin: "800px 0px" });
+  forms.forEach((f) => io.observe(f));
+}
+
+// The Turnstile script calls this once it has loaded
 
 window.nxTurnstileReady = function () {
   const key = (window.NEXYRA_CONFIG || {}).TURNSTILE_SITE_KEY;
@@ -863,7 +874,10 @@ async function submitLead(form, type, payload, whatsappURL, details) {
   errorEl.hidden = true;
 
   const token = turnstileToken(type);
-  if (turnstileWidgets[type] !== undefined && !token) {
+  const needsCheck = !!(window.NEXYRA_CONFIG || {}).TURNSTILE_SITE_KEY;
+  if (needsCheck && !token) {
+    // Covers a very quick submit before the check has finished loading
+    loadTurnstile();
     showError("Please complete the security check above the button.");
     return;
   }
@@ -910,7 +924,10 @@ function handleBooking(e) {
   const company = form.company.value.trim() || "N/A";
   const service = form.service.value;
   const date = form.date.value;
-  const time = form.time.value;
+  const tz = BOOKING_TIMEZONES[form.timezone.value] || BOOKING_TIMEZONES["Asia/Karachi"];
+  // e.g. "10:00 AM ET"; the Pakistan Time equivalent goes in the WhatsApp note
+  const time = `${form.time.value} ${tz.abbr}`;
+  const pkTime = pakistanTimeFor(date, form.time.value, form.timezone.value);
   const message = form.message.value.trim() || "N/A";
 
   const whatsappMsg =
@@ -921,7 +938,7 @@ function handleBooking(e) {
     `*Company:* ${company}\n` +
     `*Service:* ${service}\n` +
     `*Date:* ${date}\n` +
-    `*Time:* ${time}\n` +
+    `*Time:* ${time}${pkTime ? ` (${pkTime})` : ""}\n` +
     `*Details:* ${message}`;
 
   const whatsappURL = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(whatsappMsg)}`;
@@ -929,7 +946,7 @@ function handleBooking(e) {
   submitLead(
     form,
     "booking",
-    { name, email, phone, company, service, date, time, message },
+    { name, email, phone, company, service, date, time, message: pkTime ? `${message}\n\n[Pakistan Time: ${pkTime}]` : message },
     whatsappURL,
     { name, email, date, time }
   );
@@ -940,6 +957,80 @@ function initBookingDate() {
   if (dateInput) {
     dateInput.min = new Date().toISOString().split("T")[0];
   }
+}
+
+/* =================== BOOKING TIMEZONE =================== */
+// Slots are picked in the visitor's chosen timezone; for zones other than
+// PKT the hint shows the matching Pakistan Time, which is what our team works in.
+const BOOKING_TIMEZONES = {
+  "America/New_York": { abbr: "ET", label: "US Eastern (ET)" },
+  "America/Chicago": { abbr: "CT", label: "US Central (CT)" },
+  "America/Los_Angeles": { abbr: "PT", label: "US Pacific (PT)" },
+  "Europe/London": { abbr: "UK time", label: "UK time (GMT/BST)" },
+  "Europe/Berlin": { abbr: "CET/CEST", label: "Central European Time (CET/CEST)" },
+  "Asia/Dubai": { abbr: "GST", label: "Gulf Standard Time (GST)" },
+  "Asia/Karachi": { abbr: "PKT", label: "Pakistan Time (PKT)" },
+};
+
+// Minutes a zone is ahead of UTC at a given instant
+function zoneOffsetMinutes(zone, instant) {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: zone, hourCycle: "h23",
+      year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit",
+    }).formatToParts(instant).map((p) => [p.type, p.value])
+  );
+  const asUTC = Date.UTC(parts.year, parts.month - 1, parts.day, parts.hour, parts.minute);
+  return (asUTC - instant.getTime()) / 60000;
+}
+
+// "2026-11-03", "10:00 AM", "America/New_York" → "8:00 PM PKT, Tue 3 Nov"
+function pakistanTimeFor(date, slot, zone) {
+  if (!date || !slot || zone === "Asia/Karachi") return "";
+  const m = /^(\d{1,2}):(\d{2}) (AM|PM)$/.exec(slot);
+  const [y, mo, d] = date.split("-").map(Number);
+  if (!m || !y) return "";
+  const hour = (Number(m[1]) % 12) + (m[3] === "PM" ? 12 : 0);
+  const wall = Date.UTC(y, mo - 1, d, hour, Number(m[2]));
+  let instant = new Date(wall - zoneOffsetMinutes(zone, new Date(wall)) * 60000);
+  instant = new Date(wall - zoneOffsetMinutes(zone, instant) * 60000); // settle DST edges
+  const fmt = (opts) => instant.toLocaleString("en-GB", { timeZone: "Asia/Karachi", ...opts });
+  return `${fmt({ hour: "numeric", minute: "2-digit", hour12: true }).toUpperCase()} PKT, ${fmt({ weekday: "short", day: "numeric", month: "short" })}`;
+}
+
+function initBookingTimezone() {
+  const select = document.getElementById("book-tz");
+  const hint = document.getElementById("book-tz-hint");
+  if (!select || !hint) return;
+
+  // Start on the visitor's own zone when it is one we offer
+  try {
+    const local = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (BOOKING_TIMEZONES[local]) select.value = local;
+  } catch (e) { /* keep Pakistan Time */ }
+
+  const update = () => {
+    const tz = BOOKING_TIMEZONES[select.value];
+    const pk = pakistanTimeFor(
+      document.getElementById("book-date").value,
+      document.getElementById("book-time").value,
+      select.value
+    );
+    hint.textContent = `Time slots are in ${tz.label}.` + (pk ? ` That is ${pk} for our team.` : "");
+  };
+  ["book-tz", "book-date", "book-time"].forEach((id) =>
+    document.getElementById(id).addEventListener("change", update)
+  );
+  update();
+}
+
+/* Pick a service in the booking dropdown, e.g. from a service card or
+   a link like /?service=Business%20Automation#book-meeting */
+function preselectService(title) {
+  const select = document.getElementById("book-service");
+  if (!select || !title) return;
+  const option = [...select.options].find((o) => o.value === title);
+  if (option) select.value = option.value;
 }
 
 /* =================== CONTACT FORM =================== */
@@ -971,12 +1062,11 @@ document.addEventListener("DOMContentLoaded", () => {
   renderWhy();
   renderBenefits();
   renderServices();
-  renderTestimonials();
-  loadPortfolio();   // fetches projects, then renders filters + grid
+  loadPortfolio();   // fetches projects, then shows the section if there are any
   initNavbar();
   initBookingDate();
+  initBookingTimezone();
+  preselectService(new URLSearchParams(location.search).get("service"));
+  initTurnstileLoader();
   observeReveal();
-
-  // Stagger reveal on first load
-  setTimeout(observeReveal, 100);
 });

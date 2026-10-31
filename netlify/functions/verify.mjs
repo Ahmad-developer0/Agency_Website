@@ -4,24 +4,24 @@
  * Reachable at /api/verify via the redirect in netlify.toml
  */
 import { verifyCertificate } from "../../lib/verify-core.js";
-import { clientIp } from "../../lib/attempt-guard.js";
-
-const CORS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-  "Content-Type": "application/json",
-};
+import { clientIp, limitKey } from "../../lib/attempt-guard.js";
+import { originAllowed, corsHeaders, ORIGIN_REFUSED } from "../../lib/http.js";
 
 export default async (request, context) => {
-  if (request.method === "OPTIONS") return new Response("", { status: 200, headers: CORS });
+  const origin = request.headers.get("origin");
+  if (!originAllowed(origin, request.headers.get("host"))) {
+    return Response.json(ORIGIN_REFUSED, { status: 403 });
+  }
+  const headers = { ...corsHeaders(origin), "Content-Type": "application/json" };
+
+  if (request.method === "OPTIONS") return new Response(null, { status: 204, headers });
   if (request.method !== "POST") {
-    return Response.json({ success: false, error: "POST only" }, { status: 405, headers: CORS });
+    return Response.json({ success: false, error: "POST only" }, { status: 405, headers });
   }
 
   let input = {};
   try { input = await request.json(); } catch { /* empty body */ }
 
-  const { status, body } = await verifyCertificate(input, (context && context.ip) || clientIp(request.headers));
-  return new Response(JSON.stringify(body), { status, headers: CORS });
+  const { status, body } = await verifyCertificate(input, context && context.ip ? limitKey(context.ip) : clientIp(request.headers));
+  return new Response(JSON.stringify(body), { status, headers });
 };

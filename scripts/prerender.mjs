@@ -1,7 +1,7 @@
 /* ============================================
    Pre-renders the JS-built sections of index.html
 
-   The Why / Benefits / Services / Testimonials cards are built by
+   The Why / Benefits / Services cards are built by
    assets/js/script.js from its data arrays. This script runs those
    same render functions in Node and writes the resulting HTML into
    index.html, so the text is in the page Google downloads and is
@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const SECTIONS = ["why-grid", "benefits-grid", "services-grid", "testi-row-1", "testi-row-2"];
+const SECTIONS = ["why-grid", "benefits-grid", "services-grid"];
 
 // Minimal stand-in for the browser: the render functions only
 // look up elements by id and set innerHTML.
@@ -29,7 +29,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(await readFile(join(ROOT, "assets/js/script.js"), "utf8"), sandbox);
-vm.runInContext("renderWhy(); renderBenefits(); renderServices(); renderTestimonials();", sandbox);
+vm.runInContext("renderWhy(); renderBenefits(); renderServices();", sandbox);
 
 let html = await readFile(join(ROOT, "index.html"), "utf8");
 for (const id of SECTIONS) {

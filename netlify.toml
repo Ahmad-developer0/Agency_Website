@@ -34,6 +34,19 @@
   to = "/cookie-policy.html"
   status = 200
 
+# The dental clinics page was removed; send old links and search results home.
+[[redirects]]
+  from = "/dental-clinics"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dental-clinics.html"
+  to = "/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/thank-you"
   to = "/thank-you.html"
@@ -64,6 +77,85 @@
   status = 404
   force = true
 
+# Project files that are not part of the website: secrets, docs, tooling
+[[redirects]]
+  from = "/.env"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/.env.local"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/docs/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/scripts/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/.vscode/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/dev-server.mjs"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/tailwind.config.cjs"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/DEPLOY.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # ── 404 ──
 [[redirects]]
   from = "/*"
@@ -79,6 +171,10 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     # Browsers only ever use HTTPS for this site (Netlify issues the certificate)
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    # Only our own scripts plus Turnstile and Google Analytics may run
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; connect-src 'self' https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Cross-Origin-Opener-Policy = "same-origin"
 
 # Keep the admin panel and thank-you page out of search engines
 [[headers]]

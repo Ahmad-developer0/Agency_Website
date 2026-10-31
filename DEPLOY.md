@@ -33,8 +33,15 @@ Netlify: **Site configuration → Environment variables → Add a variable**
 | `SUPABASE_SERVICE_KEY` | the `service_role` key from Supabase | verification + admin |
 | `ADMIN_PASSWORD` | a long password you choose | admin panel login |
 | `RESEND_API_KEY` | your Resend key | contact & booking emails |
+| `MAIL_FROM` | optional, e.g. `Nexyra Studio <no-reply@nexyrastudio.com>` | overrides the sender address on those emails |
 | `GROK_API_KEY` | your xAI key (`xai-...`) from console.x.ai, or a Groq key (`gsk_...`) | website chat assistant |
 | `TURNSTILE_SECRET_KEY` | the **Secret Key** from Cloudflare → Turnstile | spam check on the contact & booking forms |
+| `ALLOWED_ORIGINS` | optional, comma separated, e.g. `https://staging.nexyrastudio.com` | extra sites allowed to call the API (nexyrastudio.com and the site's own domain always are) |
+
+> **Before the forms can send:** verify `nexyrastudio.com` in
+> Resend → Domains (add the DNS records it gives you). Emails go out as
+> `no-reply@nexyrastudio.com`, and Resend rejects the send until that domain is
+> verified. If you need a different address, set `MAIL_FROM` to it.
 
 The first four values are already in `.env.local` for local development; add
 `GROK_API_KEY` there too to test the chat assistant locally. That file
@@ -152,8 +159,10 @@ domain is different (for example `www.`), search-and-replace it across those fil
 
 The site no longer loads Tailwind from `cdn.tailwindcss.com` (that script built
 the CSS in each visitor's browser and was the main cause of slow loading).
-The CSS is now compiled into `assets/css/tailwind.css`, and the Why / Benefits /
-Services / Testimonials cards are written straight into `index.html` so Google
+The CSS is now compiled into `assets/css/tailwind.css` and `assets/css/style.min.css`
+(fonts.css + style.css, minified; edit those two, not the .min file). Fonts and
+icons are served from `assets/fonts/`, not Google Fonts or a CDN. The Why / Benefits /
+Services cards are written straight into `index.html` so Google
 sees them without running JavaScript.
 
 After changing page markup, Tailwind classes, or the data in `assets/js/script.js`:
@@ -162,7 +171,7 @@ After changing page markup, Tailwind classes, or the data in `assets/js/script.j
 npm run build      # = npm run prerender && npm run build:css
 ```
 
-Then deploy the updated `index.html` and `assets/css/tailwind.css` with everything else.
+Then deploy the updated `index.html`, `assets/css/tailwind.css` and `assets/css/style.min.css` with everything else.
 
 ## Google Search Console (one-time)
 

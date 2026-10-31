@@ -1,0 +1,3 @@
+/* Build input for style.min.css (npm run build:css). Edit fonts.css and style.css, not the output. */
+@import "./fonts.css";
+@import "./style.css";

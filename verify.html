@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#4f46e5" />
+  <meta property="og:locale" content="en_US" />
   <title>Verify Internship Certificate | Nexyra Studio</title>
   <meta name="description" content="Verify the authenticity of a Nexyra Studio internship certificate by entering the certificate number." />
   <link rel="canonical" href="https://nexyrastudio.com/verify" />
@@ -19,12 +21,9 @@
   <meta name="twitter:title" content="Verify Internship Certificate | Nexyra Studio" />
   <meta name="twitter:description" content="Verify the authenticity of a Nexyra Studio internship certificate by entering the certificate number." />
   <meta name="twitter:image" content="https://nexyrastudio.com/public/images/og-image.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></noscript>
-  <link rel="stylesheet" href="/assets/css/style.css"/>
+  <link rel="preload" href="/assets/fonts/orbitron.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.min.css"/>
   <link href="/public/images/favicon-round.png?v=3" rel="icon" type="image/png">
   <link href="/public/images/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -256,7 +255,7 @@
     <footer class="verify-foot footer-section pt-10 pb-6 relative z-10">
       <div class="max-w-[100rem] mx-auto px-4 sm:px-6">
         <div class="footer-divider border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm body-muted text-center">
-          <span>&copy; 2024 Nexyra Studio. All rights reserved.</span>
+          <span>&copy; <span data-current-year>2026</span> Nexyra Studio. All rights reserved.</span>
           <span>Questions about a certificate? <a href="mailto:support@nexyrastudio.com" class="footer-link">support@nexyrastudio.com</a></span>
         </div>
         <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4 text-sm">

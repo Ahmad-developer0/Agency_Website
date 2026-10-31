@@ -20,3 +20,24 @@ alter table public.security_attempts enable row level security;
 
 -- To unblock someone early, delete their row, e.g.:
 --   delete from public.security_attempts where id like 'admin:%';
+
+-- ============================================
+--  Row Level Security check — run any time.
+--  Every table below must show rls_enabled = true. With RLS on and
+--  no policies, the browser (anon key) can't read or write anything;
+--  only the server functions, which use the service_role key, can.
+-- ============================================
+alter table if exists public.interns           enable row level security;
+alter table if exists public.projects          enable row level security;
+alter table if exists public.security_attempts enable row level security;
+
+select c.relname as table_name,
+       c.relrowsecurity as rls_enabled,
+       (select count(*) from pg_policies p
+         where p.schemaname = 'public' and p.tablename = c.relname) as policies
+from pg_class c
+join pg_namespace n on n.oid = c.relnamespace
+where n.nspname = 'public' and c.relkind = 'r'
+order by 1;
+-- "policies" should be 0 for these tables. If a table shows a policy you
+-- didn't add on purpose, remove it in Supabase > Authentication > Policies.

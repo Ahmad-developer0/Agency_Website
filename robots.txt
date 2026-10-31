@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
-Disallow: /staff-portal
-Disallow: /thank-you
+
+# /staff-portal and /thank-you are kept out of search by a
+# "noindex" tag on the page itself plus an X-Robots-Tag header.
+# They are deliberately NOT disallowed here: a disallowed page is
+# never crawled, so Google never reads the noindex and can still
+# list the bare URL. Letting it crawl is what guarantees removal.
 Disallow: /api/
 
 Sitemap: https://nexyrastudio.com/sitemap.xml

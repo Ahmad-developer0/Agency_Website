@@ -11,12 +11,22 @@
 
 import { createServer } from "node:http";
 import { readFile, access } from "node:fs/promises";
-import { extname, join, normalize } from "node:path";
+import { extname, join, normalize, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname } from "node:path";
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT) || 3000;
+
+// Same security headers as netlify.toml / vercel.json, so problems show up locally
+const SECURITY_HEADERS = {
+  "X-Frame-Options": "SAMEORIGIN",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; connect-src 'self' https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+  "Cross-Origin-Opener-Policy": "same-origin",
+};
 
 /* ── Load .env.local into process.env ── */
 async function loadEnv() {
@@ -87,8 +97,16 @@ function readBody(req) {
 /* ── Request handling ── */
 const server = createServer(async (req, res) => {
   decorate(res);
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) res.setHeader(k, v);
   const url = new URL(req.url, `http://localhost:${PORT}`);
-  let pathname = decodeURIComponent(url.pathname);
+  let pathname;
+  try { pathname = decodeURIComponent(url.pathname); } catch { return res.status(400).send("Bad request"); }
+
+  // Never serve dotfiles (.env.local holds the API keys) or other private files
+  if (pathname.split("/").some((part) => part.startsWith(".")) ||
+      /^\/(node_modules|docs|scripts|netlify)\//.test(pathname)) {
+    return res.status(404).send("Not found");
+  }
 
   // ---- API routes: /api/<name> -> api/<name>.js ----
   if (pathname.startsWith("/api/")) {
@@ -135,13 +153,20 @@ const server = createServer(async (req, res) => {
     return res.end();
   }
 
+  // The dental clinics page was removed
+  if (pathname === "/dental-clinics" || pathname === "/dental-clinics.html") {
+    res.statusCode = 301;
+    res.setHeader("Location", "/");
+    return res.end();
+  }
+
   // ---- Static files ----
   if (pathname === "/") pathname = "/index.html";
   // allow /verify as well as /verify.html
   if (!extname(pathname)) pathname += ".html";
 
   const filePath = normalize(join(ROOT, pathname));
-  if (!filePath.startsWith(ROOT)) {
+  if (!filePath.startsWith(ROOT + sep)) {
     return res.status(403).send("Forbidden");
   }
 
@@ -166,7 +191,8 @@ const server = createServer(async (req, res) => {
 });
 
 await loadEnv();
-server.listen(PORT, () => {
+// localhost only: other devices on the network can't reach it (or .env.local's keys)
+server.listen(PORT, "127.0.0.1", () => {
   console.log("");
   console.log("  Nexyra Studio — local dev server");
   console.log("  ────────────────────────────────────────");
