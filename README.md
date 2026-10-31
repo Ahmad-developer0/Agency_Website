@@ -3,7 +3,7 @@
 Static site with a Supabase back end: contact/booking emails, internship
 certificate verification, and a dynamic portfolio — all managed from one admin
 panel.
-
+ 
 ## Running locally
 
 ```bash
