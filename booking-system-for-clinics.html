@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#4f46e5" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="robots" content="index, follow" />
+  <title>Clinic Booking System Pakistan | Nexyra Studio</title>
+  <meta name="description" content="Online appointment booking, SMS and WhatsApp reminders and patient records for clinics and dental practices in Pakistan. Custom built, not a subscription. Free call." />
+  <link rel="canonical" href="https://nexyrastudio.com/booking-system-for-clinics" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nexyra Studio" />
+  <meta property="og:title" content="Clinic Booking System Pakistan | Nexyra Studio" />
+  <meta property="og:description" content="Online appointment booking, SMS and WhatsApp reminders and patient records for clinics and dental practices in Pakistan. Custom built, not a subscription. Free call." />
+  <meta property="og:url" content="https://nexyrastudio.com/booking-system-for-clinics" />
+  <meta property="og:image" content="https://nexyrastudio.com/public/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nexyra Studio logo with the tagline Digital Marketing, Web and App Development" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Clinic Booking System Pakistan | Nexyra Studio" />
+  <meta name="twitter:description" content="Online appointment booking, SMS and WhatsApp reminders and patient records for clinics and dental practices in Pakistan. Custom built, not a subscription. Free call." />
+  <meta name="twitter:image" content="https://nexyrastudio.com/public/images/og-image.png" />
+  <link rel="preload" href="/assets/fonts/orbitron.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/lato-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.min.css"/>
+  <link href="/public/images/favicon-round.png?v=3" rel="icon" type="image/png">
+  <link href="/public/images/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="/assets/css/tailwind.css"/>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Clinic Appointment Booking Systems", "serviceType": "Medical appointment scheduling software", "url": "https://nexyrastudio.com/booking-system-for-clinics", "description": "Online appointment booking, SMS and WhatsApp reminders and patient records for clinics and dental practices in Pakistan. Custom built, not a subscription. Free call.", "provider": {"@type": "ProfessionalService", "name": "Nexyra Studio", "url": "https://nexyrastudio.com/", "email": "support@nexyrastudio.com", "telephone": "+92-315-7558885", "address": {"@type": "PostalAddress", "addressCountry": "PK"}}, "areaServed": [{"@type": "Country", "name": "Pakistan"}, {"@type": "Place", "name": "Worldwide"}], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Clinic Appointment Booking Systems", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Patient appointment booking"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Multi-doctor scheduling"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SMS and WhatsApp appointment reminders"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Patient records and visit history"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Walk-in and online queue management"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Follow-up and recall reminders"}}]}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can patients book without having an app?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Booking happens in a normal web page, so a WhatsApp link or a Google listing is enough. We only recommend an app when patients come back often enough to justify installing one."}}, {"@type": "Question", "name": "Will reminders work on WhatsApp?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, through the official WhatsApp Business API, which carries a per-message cost from the provider. SMS is the alternative and costs less but gets read less. We usually set up both and let you choose per message type."}}, {"@type": "Question", "name": "What about patients who just walk in?", "acceptedAnswer": {"@type": "Answer", "text": "They are added at the desk and join the same queue as booked patients. The point of the system is one schedule, not an online schedule plus a paper one."}}, {"@type": "Question", "name": "Is patient data safe?", "acceptedAnswer": {"@type": "Answer", "text": "Access is limited by role, storage is encrypted and every record change is logged. The database is yours, hosted where you choose. We will show your staff exactly who can see what before you go live."}}, {"@type": "Question", "name": "Can it handle more than one branch?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each branch keeps its own doctors and schedule while patient records stay shared, so someone who visits a different branch is still a known patient."}}, {"@type": "Question", "name": "How long does it take to set up?", "acceptedAnswer": {"@type": "Answer", "text": "A booking page with reminders for a single clinic is usually 2&ndash;4 weeks. Adding patient records, multi-doctor scheduling and recall follow-ups takes longer. We can launch booking first and add the rest afterwards."}}]}</script>
+</head>
+<body class="light-mode">
+
+  <div class="page-wrap">
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav style="border-bottom:1px solid var(--border)">
+      <div class="max-w-[100rem] mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-20 gap-4">
+        <a href="/" class="flex items-center gap-2">
+          <span class="font-display font-extrabold text-xl tracking-tight accent-text">Nexyra<span class="logo-text">Studio<span class="accent-text">.</span></span></span>
+        </a>
+        <div class="flex items-center gap-5">
+          <a href="/" class="page-nav-link hidden sm:inline">Home</a>
+          <a href="/#services" class="page-nav-link hidden sm:inline">Services</a>
+          <a href="/#contact" class="page-nav-link hidden sm:inline">Contact</a>
+          <button id="theme-toggle" class="theme-btn w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110" aria-label="Toggle theme">
+            <svg id="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg id="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════ MAIN ═══════════ -->
+    <main class="page-main px-4 sm:px-6 py-14">
+      <article class="legal max-w-3xl mx-auto">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li aria-current="page">Booking for Clinics</li>
+          </ol>
+        </nav>
+        <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nexyrastudio.com/"}, {"@type": "ListItem", "position": 2, "name": "Booking for Clinics", "item": "https://nexyrastudio.com/booking-system-for-clinics"}]}</script>
+        <span class="badge-pill inline-block px-4 py-1.5 rounded-full text-xs font-semibold mb-5">For Clinics</span>
+        <h1 class="font-display text-3xl md:text-4xl font-extrabold tracking-tight mb-3">Appointment Booking Built for <span class="accent-text">Clinics</span></h1>
+
+        <p>Most clinics in Pakistan still run appointments on a register and a phone. It works until it does not: two patients booked at the same time, a waiting room that fills up because walk-ins and appointments are handled separately, and a receptionist who spends the whole morning on the phone instead of with the people in front of her.</p>
+
+        <h2>What a clinic booking system changes</h2>
+        <ul>
+          <li><strong>Patients book themselves</strong> &mdash; from your website, a WhatsApp link or a Google listing, at any hour. Slots shown are the real free slots for that doctor.</li>
+          <li><strong>Walk-ins and bookings share one queue</strong> &mdash; the receptionist adds a walk-in and everyone's position updates. No parallel lists that disagree with each other.</li>
+          <li><strong>Each doctor keeps their own schedule</strong> &mdash; different days, different consultation lengths, different rooms, all behind one booking page.</li>
+          <li><strong>Reminders go out automatically</strong> &mdash; the day before and again a couple of hours ahead, over SMS or WhatsApp, in the language your patients actually read.</li>
+        </ul>
+
+        <h2>Patient records that stay with the patient</h2>
+        <p>Once appointments run through a system, every visit attaches to the right patient file: dates, which doctor, what it was for, notes, and payments. The receptionist can find a returning patient by phone number in a couple of seconds instead of flipping through a register.</p>
+        <p>This matters most for the follow-ups clinics usually lose. A dental practice that should recall patients every six months, a physiotherapist running a twelve-session course, a dermatologist with a treatment cycle &mdash; the system flags who is due and your team contacts them deliberately instead of waiting for patients to remember.</p>
+
+        <h2>Reducing the no-show problem</h2>
+        <p>No-shows are the quiet cost in any clinic: a booked slot that earns nothing and that another patient could have used. Reminders remove most of the simple forgetting. Beyond that, two things help &mdash; letting patients reschedule with one tap rather than silently not coming, and taking a small token amount at booking for consultations where that is appropriate. Whether a deposit suits your practice depends on your patients, and we will give you an honest view rather than pushing it.</p>
+
+        <h2>Built for your clinic, not rented</h2>
+        <p>There are ready-made clinic platforms in Pakistan, and if one fits your practice we will say so &mdash; configuring an existing tool is cheaper and faster than building. We build custom when the fit is wrong: unusual scheduling rules, multiple branches that need separate schedules but one patient file, integration with a system you already use, or per-user monthly fees that stop making sense as your team grows.</p>
+        <p>A custom build is yours. No per-doctor subscription that rises every year, no vendor deciding to change the product, and your patient data stays in your own database.</p>
+
+        <h2>Privacy and patient data</h2>
+        <p>Patient information is sensitive and we treat it that way: access limited by role so reception sees scheduling and doctors see clinical notes, an audit trail of who opened what, encrypted storage, and regular backups. We will walk you and your staff through exactly where the data lives and who can reach it.</p>
+
+        <h2>Who we build for</h2>
+        <p>General practice and family clinics, dental practices, physiotherapy and rehabilitation centres, dermatology and aesthetic clinics, eye clinics, diagnostic labs with appointment-based tests, and small multi-speciality setups. If you run a single-doctor practice, the honest answer is often that a simpler booking page plus reminders is all you need &mdash; and that is a much smaller project.</p>
+
+        <h2>Frequently asked questions</h2>
+        <h3 class="font-display text-lg font-bold mt-7 mb-2">Can patients book without having an app?</h3>
+        <p>Yes. Booking happens in a normal web page, so a WhatsApp link or a Google listing is enough. We only recommend an app when patients come back often enough to justify installing one.</p>
+        <h3 class="font-display text-lg font-bold mt-7 mb-2">Will reminders work on WhatsApp?</h3>
+        <p>Yes, through the official WhatsApp Business API, which carries a per-message cost from the provider. SMS is the alternative and costs less but gets read less. We usually set up both and let you choose per message type.</p>
+        <h3 class="font-display text-lg font-bold mt-7 mb-2">What about patients who just walk in?</h3>
+        <p>They are added at the desk and join the same queue as booked patients. The point of the system is one schedule, not an online schedule plus a paper one.</p>
+        <h3 class="font-display text-lg font-bold mt-7 mb-2">Is patient data safe?</h3>
+        <p>Access is limited by role, storage is encrypted and every record change is logged. The database is yours, hosted where you choose. We will show your staff exactly who can see what before you go live.</p>
+        <h3 class="font-display text-lg font-bold mt-7 mb-2">Can it handle more than one branch?</h3>
+        <p>Yes. Each branch keeps its own doctors and schedule while patient records stay shared, so someone who visits a different branch is still a known patient.</p>
+        <h3 class="font-display text-lg font-bold mt-7 mb-2">How long does it take to set up?</h3>
+        <p>A booking page with reminders for a single clinic is usually 2&ndash;4 weeks. Adding patient records, multi-doctor scheduling and recall follow-ups takes longer. We can launch booking first and add the rest afterwards.</p>
+
+        <h2>Related services</h2>
+        <ul>
+          <li><a href="/booking-crm-systems">Booking &amp; CRM systems</a> &mdash; the full picture, across industries</li>
+          <li><a href="/salon-booking-software">Booking for salons</a> &mdash; the same idea for salons and barbers</li>
+          <li><a href="/app-development">App development</a> &mdash; a patient-facing app</li>
+          <li><a href="/web-development">Web development</a> &mdash; the clinic website it sits on</li>
+        </ul>
+
+        <h2>Start with a free 30-minute call</h2>
+        <p>Tell us what you are trying to fix or build. We will tell you honestly whether we are the right fit, roughly what it costs and how long it takes &mdash; no obligation, no sales pressure.</p>
+        <p style="margin-top:1.5rem">
+          <a href="/#contact" class="btn-primary px-7 py-3.5 rounded-xl font-semibold inline-block transition-all duration-300 hover:scale-105">Book a free call</a>
+        </p>
+        <p>Or reach us directly: <a href="mailto:support@nexyrastudio.com">support@nexyrastudio.com</a> &middot; <a href="https://wa.me/923157558885" target="_blank" rel="noopener">WhatsApp +92 315 7558885</a></p>
+      </article>
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="page-foot footer-section pt-8 pb-6">
+      <div class="max-w-[100rem] mx-auto px-4 sm:px-6">
+        <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-5 text-sm">
+          <li><a href="/" class="footer-link">Home</a></li>
+          <li><a href="/web-development" class="footer-link">Web Development</a></li>
+          <li><a href="/app-development" class="footer-link">App Development</a></li>
+          <li><a href="/seo-digital-marketing" class="footer-link">SEO &amp; Marketing</a></li>
+          <li><a href="/booking-crm-systems" class="footer-link">Booking &amp; CRM</a></li>
+          <li><a href="/#faq" class="footer-link">FAQ</a></li>
+          <li><a href="/#contact" class="footer-link">Contact</a></li>
+          <li><a href="/verify" class="footer-link">Verify Certificate</a></li>
+          <li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li>
+          <li><a href="/cookie-policy" class="footer-link">Cookie Policy</a></li>
+          <li><a href="#" data-cookie-settings class="footer-link">Cookie Settings</a></li>
+        </ul>
+        <div class="footer-divider border-t pt-5 text-center text-sm body-muted">
+          <span>&copy; <span data-current-year>2026</span> Nexyra Studio. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Same theme behaviour as the rest of the site
+    (function () {
+      var body = document.body;
+      var btn = document.getElementById("theme-toggle");
+      var sun = document.getElementById("icon-sun");
+      var moon = document.getElementById("icon-moon");
+
+      function apply(theme) {
+        var dark = theme === "dark";
+        body.classList.toggle("dark-mode", dark);
+        body.classList.toggle("light-mode", !dark);
+        sun.classList.toggle("hidden", !dark);
+        moon.classList.toggle("hidden", dark);
+      }
+
+      var saved = "light";
+      try { saved = localStorage.getItem("theme") || "light"; } catch (e) {}
+      apply(saved);
+
+      btn.addEventListener("click", function () {
+        var next = body.classList.contains("dark-mode") ? "light" : "dark";
+        try { localStorage.setItem("theme", next); } catch (e) {}
+        apply(next);
+      });
+    })();
+  </script>
+  <script src="/assets/js/site-config.js"></script>
+  <script src="/assets/js/consent.js"></script>
+</body>
+</html>
