@@ -13,7 +13,7 @@ window.NEXYRA_CONFIG = {
   // Set the matching TURNSTILE_SECRET_KEY on the server too: without it the
   // server skips the check. On localhost, Cloudflare's always-pass test key
   // is used.
-  TURNSTILE_SITE_KEY: location.hostname === "localhost" ? "1x00000000000000000000AA" : "0x4AAAAAAFt6nOFpQzYJRYA9",
+  TURNSTILE_SITE_KEY: location.hostname === "localhost" ? "1x00000000000000000000AA" : "0x4AAAAAAFuYa5TP9hVmVb1h",
 };
 
 /* ============================================
