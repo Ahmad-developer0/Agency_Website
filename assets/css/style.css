@@ -1682,6 +1682,18 @@ body.menu-open {
     text-decoration: underline;
 }
 
+/* A button inside article prose keeps its own colours: .legal a is more
+   specific than .btn-primary, so without this the label is painted the
+   same accent purple as the button background and disappears. */
+.legal a.btn-primary {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dark-mode .legal a.btn-primary {
+    color: #09090b;
+}
+
 .legal-table-wrap {
     overflow-x: auto;
 }
