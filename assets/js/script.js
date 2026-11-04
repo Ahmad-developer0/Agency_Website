@@ -377,7 +377,8 @@ function renderPortfolio(filter = "all") {
         <div class="flex items-center justify-between mb-2">
           <span class="chip">${esc(item.category)}</span>
         </div>
-        <h3 class="font-display font-bold text-lg mb-2">${esc(item.title)}</h3>
+        <h3 class="font-display font-bold text-lg mb-1">${esc(item.title)}</h3>
+        ${item.client ? `<p class="portfolio-client text-xs mb-2">Client: ${esc(item.client)}</p>` : ""}
         ${item.summary ? `<p class="body-muted text-sm leading-relaxed mb-3 clamp-2">${esc(item.summary)}</p>` : ""}
         <div class="flex flex-wrap gap-1.5">${tags}${more}</div>
       </div>

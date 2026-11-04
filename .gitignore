@@ -6,3 +6,8 @@ node_modules
 .DS_Store
 *.rar
 *.zip
+
+# Local assets for the Google Business Profile listing, not part of the site
+gbp-photos/
+gbp-content.md
+clutch-appeal.md

@@ -672,6 +672,13 @@ body.menu-open {
     color: #09090b;
 }
 
+/* Names the client on each card, so the grid reads as client work at a
+   glance rather than as our own products. */
+.portfolio-client {
+    color: var(--accent);
+    font-weight: 600;
+}
+
 .portfolio-card.hidden {
     display: none;
 }
