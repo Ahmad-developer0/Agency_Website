@@ -1,0 +1,40 @@
+# Nexyra Studio
+
+> Nexyra Studio is a web and software development agency founded in Faisalabad,
+> Pakistan in 2022. We build the systems service businesses run on: websites
+> that generate enquiries, online booking and CRM platforms, custom software,
+> and the mobile apps that sit alongside them. We work in Next.js, React and
+> TypeScript on the front end, with Nest.js, Node, Spring Boot, PostgreSQL,
+> MySQL and Supabase behind it. Clients are in Pakistan, the UK, the US, the
+> UAE and Australia. Every project starts with a free 30-minute call and a
+> written scope with a fixed price before any work begins.
+
+Contact: support@nexyrastudio.com · +92 315 7558885 (WhatsApp) · Faisalabad, Pakistan
+
+## Services
+
+- [Web Development](https://nexyrastudio.com/web-development): Custom website development for businesses in Pakistan and worldwide. Fast, mobile-first sites with booking, forms and CRM built in.
+- [App Development](https://nexyrastudio.com/app-development): Android and iOS apps from one codebase — booking apps, delivery apps, customer portals and internal staff tools, including Play Store and App Store publishing.
+- [SEO & Digital Marketing](https://nexyrastudio.com/seo-digital-marketing): Local SEO, Google Business Profile setup, technical audits, and Google and Meta ads. Monthly reporting on enquiries and calls, not just traffic. No lock-in contracts.
+- [Booking & CRM Systems](https://nexyrastudio.com/booking-crm-systems): Online appointment booking, customer CRM, automated WhatsApp and SMS reminders, and the automation that removes repetitive admin work.
+
+## Industry-specific booking systems
+
+- [Clinic Booking System](https://nexyrastudio.com/booking-system-for-clinics): Patient booking, multi-doctor scheduling, SMS and WhatsApp reminders and patient records for clinics and dental practices. Custom built, not a subscription.
+- [Salon Booking Software](https://nexyrastudio.com/salon-booking-software): Stylist-wise online booking with real service durations, deposits to cut no-shows, WhatsApp reminders and client history. Works for single salons and multiple branches.
+
+## Local
+
+- [Web Development in Faisalabad](https://nexyrastudio.com/web-development-faisalabad): Website and software development in Faisalabad — meet in person, work in Urdu or English, and build a site with booking and enquiries.
+
+## About
+
+- [Home](https://nexyrastudio.com/): Company overview, the full service list, client portfolio with the client named on each project, team, FAQ and contact form.
+
+Founded: 2022 · Team size: 2–10 · Languages: English, Urdu, Punjabi
+Verified profile: https://techbehemoths.com/company/nexyra-studio
+
+## Optional
+
+- [Privacy Policy](https://nexyrastudio.com/privacy-policy): How Nexyra Studio collects, uses and protects personal information shared through the website, forms and chat assistant.
+- [Cookie Policy](https://nexyrastudio.com/cookie-policy): The cookies and browser storage nexyrastudio.com uses, and how to accept or reject analytics cookies.
