@@ -91,6 +91,7 @@ const servicesData = [
   {
     icon: "calendar",
     title: "Online Appointment Systems",
+    url: "/booking-crm-systems",
     group: "Booking, CRM & Calling",
     description:
       "Let customers book 24/7 from your website, Google or WhatsApp, with live availability and no double bookings.",
@@ -106,6 +107,7 @@ const servicesData = [
   {
     icon: "users",
     title: "Customer CRM",
+    url: "/booking-crm-systems",
     group: "Booking, CRM & Calling",
     description:
       "One place for every customer's details, deals, messages and follow-ups, so nobody falls through the cracks.",
@@ -121,6 +123,7 @@ const servicesData = [
   {
     icon: "bell",
     title: "Automated Reminders",
+    url: "/booking-crm-systems",
     group: "Booking, CRM & Calling",
     description:
       "Automatic SMS, WhatsApp and email reminders that cut no-shows and bring customers back again.",
@@ -136,6 +139,7 @@ const servicesData = [
   {
     icon: "phone",
     title: "Calling Systems",
+    url: "/booking-crm-systems",
     group: "Booking, CRM & Calling",
     description:
       "Business phone and call-handling setup so every call is answered, routed or followed up, even after hours.",
@@ -151,6 +155,7 @@ const servicesData = [
   {
     icon: "zap",
     title: "Business Automation",
+    url: "#book-meeting",
     group: "Automation & Custom Software",
     description:
       "Automate the repetitive work — forms, follow-ups, data entry and reports — so your team can focus on customers.",
@@ -166,6 +171,7 @@ const servicesData = [
   {
     icon: "code",
     title: "Custom Software",
+    url: "#book-meeting",
     group: "Automation & Custom Software",
     description:
       "Web-based software built around how your business works, when off-the-shelf tools don't fit.",
@@ -181,6 +187,7 @@ const servicesData = [
   {
     icon: "link",
     title: "Integrations",
+    url: "#book-meeting",
     group: "Automation & Custom Software",
     description:
       "Connect the tools you already use — booking, CRM, payments, WhatsApp, email and accounting — so data flows automatically.",
@@ -196,6 +203,7 @@ const servicesData = [
   {
     icon: "monitor",
     title: "Web Development",
+    url: "/web-development",
     group: "Web, Apps & Marketing",
     description:
       "Fast, mobile-friendly websites and landing pages with online booking, built to turn visitors into enquiries.",
@@ -211,6 +219,7 @@ const servicesData = [
   {
     icon: "smartphone",
     title: "App Development",
+    url: "/app-development",
     group: "Web, Apps & Marketing",
     description:
       "Android apps for bookings, customer portals and internal teams, designed to be simple to use and easy to scale.",
@@ -226,6 +235,7 @@ const servicesData = [
   {
     icon: "search",
     title: "Digital Marketing & SEO",
+    url: "/seo-digital-marketing",
     group: "Web, Apps & Marketing",
     description:
       "Rank on Google Search and Google Maps, and run Google and Meta ads that turn clicks into bookings.",
@@ -323,9 +333,9 @@ function renderServices() {
           <div class="card-icon">${icon(item.icon)}</div>
           <h4 class="font-display font-bold text-lg mb-3">${item.title}</h4>
           <p class="body-muted text-sm leading-relaxed mb-4">${item.description}</p>
-          <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
+          <a href="${item.url}" class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)" onclick="event.stopPropagation()">
             Learn more <span>→</span>
-          </div>
+          </a>
         </div>`,
         )
         .join("");
