@@ -329,14 +329,14 @@ function renderServices() {
       const cards = items
         .map(
           ({ item, i }, n) => `
-        <div class="feature-card reveal-up" style="transition-delay: ${n * 0.08}s; cursor: pointer;" onclick="openServiceModal(${i})">
+        <a href="${item.url}" class="feature-card reveal-up" style="transition-delay: ${n * 0.08}s; cursor: pointer; color: inherit; text-decoration: none;" onclick="openServiceModal(${i}); return false;">
           <div class="card-icon">${icon(item.icon)}</div>
           <h4 class="font-display font-bold text-lg mb-3">${item.title}</h4>
           <p class="body-muted text-sm leading-relaxed mb-4">${item.description}</p>
-          <a href="${item.url}" class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)" onclick="event.stopPropagation()">
+          <div class="inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--accent)">
             Learn more <span>→</span>
-          </a>
-        </div>`,
+          </div>
+        </a>`,
         )
         .join("");
       const cols = items.length > 3 ? "lg:grid-cols-4" : "lg:grid-cols-3";
