@@ -350,6 +350,16 @@ function renderServices() {
     .join("");
 }
 
+/* Cover dimensions, measured 2026-11-15: most covers are 1280x720; the
+   described-ai and wordrig-admin covers are 1280x853. New covers should
+   be uploaded at 1280x720. The attributes reserve the right space before
+   the image loads (and satisfy the SEO tool's width/height check). */
+function coverDims(coverUrl) {
+  return /described-ai|wordrig-admin/.test(coverUrl || "")
+    ? 'width="1280" height="853"'
+    : 'width="1280" height="720"';
+}
+
 function renderPortfolio(filter = "all") {
   const grid = document.getElementById("portfolio-grid");
 
@@ -365,7 +375,7 @@ function renderPortfolio(filter = "all") {
     .map((item, i) => {
       const hidden = filter !== "all" && item.category !== filter ? "hidden" : "";
       const media = item.cover
-        ? `<img src="${esc(item.cover)}" alt="${esc(item.title)}" class="portfolio-img"
+        ? `<img src="${esc(item.cover)}" alt="${esc(item.title)}" class="portfolio-img" ${coverDims(item.cover)}
                 loading="lazy" onerror="portfolioImgFallback(this)">`
         : `<div class="portfolio-img-placeholder overflow-hidden"><span>${icon("image")}</span></div>`;
 
@@ -473,7 +483,7 @@ function openPortfolioModal(index) {
 
   // ── Hero ──
   const hero = item.cover
-    ? `<img src="${esc(item.cover)}" alt="${esc(item.title)}" class="case-hero-img"
+    ? `<img src="${esc(item.cover)}" alt="${esc(item.title)}" class="case-hero-img" ${coverDims(item.cover)}
             onerror="caseHeroFallback(this)">`
     : `<div class="case-hero-placeholder"><span>${icon("image")}</span></div>`;
 
