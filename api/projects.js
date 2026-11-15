@@ -13,5 +13,10 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(204).end();
 
   const { status, body } = await listPublicProjects();
+  if (req.method === "GET" && status === 200) {
+    // Portfolio changes rarely; cache briefly at the edge and in browsers so
+    // repeat visits render the portfolio without waiting on Supabase.
+    res.setHeader("Cache-Control", "public, max-age=60, s-maxage=60, stale-while-revalidate=300");
+  }
   return res.status(status).json(body);
 }

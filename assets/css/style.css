@@ -773,6 +773,9 @@ body.menu-open {
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.2s;
+    /* Tap target: keep footer links at least 24px tall (SBMM flags <24px) */
+    display: inline-block;
+    padding: 3px 0;
 }
 
 .footer-link:hover {
@@ -1806,6 +1809,8 @@ body.menu-open {
     font-weight: 700;
     color: var(--accent);
     text-decoration: none;
+    /* Tap target: keep the link at least 24px tall (SBMM flags <24px) */
+    padding: 3px 0;
 }
 
 .author-link:hover {
