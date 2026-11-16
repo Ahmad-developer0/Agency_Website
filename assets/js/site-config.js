@@ -7,7 +7,7 @@
 window.NEXYRA_CONFIG = {
   // Google Analytics 4 "Measurement ID" (Admin → Data streams → Web).
   // Looks like "G-ABC123XYZ". Leave empty to turn analytics off.
-  GA_MEASUREMENT_ID: "",
+  GA_MEASUREMENT_ID: "G-VSJ4BX2192",
 
   // Cloudflare Turnstile "Site Key" (Cloudflare dashboard → Turnstile).
   // Set the matching TURNSTILE_SECRET_KEY on the server too: without it the
